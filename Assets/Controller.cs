@@ -34,7 +34,6 @@ public class Movement : MonoBehaviour
     void Update()
     {
         controllerMotionInput = motionInput();
-        
     }
     // private void OnMouseDown() {
     //     Debug.Log("true")
