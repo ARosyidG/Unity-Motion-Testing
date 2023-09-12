@@ -18,7 +18,7 @@ public class Box : MonoBehaviour
         Vector3 cameraRelativeY = Input.GetAxis("Mouse X") * (-1) * cameraY;
         Vector3 controllerMotionInput = (cameraRelativeX + cameraRelativeY).normalized; 
         print(controllerMotionInput);
-        this.transform.Rotate(controllerMotionInput * 300 * Time.deltaTime,Space.World);
+        this.transform.Rotate(controllerMotionInput * 1000 * Time.deltaTime,Space.World);
     }
     bool translateInputToggle = false;
     void translateModel(){
@@ -39,7 +39,7 @@ public class Box : MonoBehaviour
 
     void Update()
     {
-        // rotateModel();
-        translateModel();
+        //rotateModel();
+        //translateModel();
     }
 }
