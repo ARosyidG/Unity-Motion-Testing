@@ -2106,11 +2106,11 @@
             ]
         },
         {
-            "name": "CostumControl",
+            "name": "Controller",
             "id": "0388e47a-ac96-46ba-95e8-6b6ecf3455bd",
             "actions": [
                 {
-                    "name": "test",
+                    "name": "Key",
                     "type": "Button",
                     "id": "f7522340-8b38-4717-b67b-2c8e80d58466",
                     "expectedControlType": "Button",
@@ -2122,12 +2122,23 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "f237a29f-b252-417c-ad3f-f6c7a8010195",
-                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "id": "ab6e7d77-241a-43fc-96b0-2f7f88deb3fc",
+                    "path": "<Keyboard>/slash",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "test",
+                    "groups": "Continuous Move",
+                    "action": "Key",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f237a29f-b252-417c-ad3f-f6c7a8010195",
+                    "path": "<OculusTouchController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Continuous Move",
+                    "action": "Key",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -2128,11 +2128,11 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
             ]
         },
         {
-            ""name"": ""CostumControl"",
+            ""name"": ""Controller"",
             ""id"": ""0388e47a-ac96-46ba-95e8-6b6ecf3455bd"",
             ""actions"": [
                 {
-                    ""name"": ""test"",
+                    ""name"": ""Key"",
                     ""type"": ""Button"",
                     ""id"": ""f7522340-8b38-4717-b67b-2c8e80d58466"",
                     ""expectedControlType"": ""Button"",
@@ -2144,12 +2144,23 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""f237a29f-b252-417c-ad3f-f6c7a8010195"",
-                    ""path"": ""<XRController>{LeftHand}/triggerPressed"",
+                    ""id"": ""ab6e7d77-241a-43fc-96b0-2f7f88deb3fc"",
+                    ""path"": ""<Keyboard>/slash"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""test"",
+                    ""groups"": ""Continuous Move"",
+                    ""action"": ""Key"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f237a29f-b252-417c-ad3f-f6c7a8010195"",
+                    ""path"": ""<OculusTouchController>{LeftHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Continuous Move"",
+                    ""action"": ""Key"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -2302,9 +2313,9 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         m_XRIUI_ScrollWheel = m_XRIUI.FindAction("ScrollWheel", throwIfNotFound: true);
         m_XRIUI_MiddleClick = m_XRIUI.FindAction("MiddleClick", throwIfNotFound: true);
         m_XRIUI_RightClick = m_XRIUI.FindAction("RightClick", throwIfNotFound: true);
-        // CostumControl
-        m_CostumControl = asset.FindActionMap("CostumControl", throwIfNotFound: true);
-        m_CostumControl_test = m_CostumControl.FindAction("test", throwIfNotFound: true);
+        // Controller
+        m_Controller = asset.FindActionMap("Controller", throwIfNotFound: true);
+        m_Controller_Key = m_Controller.FindAction("Key", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -3113,38 +3124,38 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     }
     public XRIUIActions @XRIUI => new XRIUIActions(this);
 
-    // CostumControl
-    private readonly InputActionMap m_CostumControl;
-    private ICostumControlActions m_CostumControlActionsCallbackInterface;
-    private readonly InputAction m_CostumControl_test;
-    public struct CostumControlActions
+    // Controller
+    private readonly InputActionMap m_Controller;
+    private IControllerActions m_ControllerActionsCallbackInterface;
+    private readonly InputAction m_Controller_Key;
+    public struct ControllerActions
     {
         private @XRIDefaultInputActions m_Wrapper;
-        public CostumControlActions(@XRIDefaultInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @test => m_Wrapper.m_CostumControl_test;
-        public InputActionMap Get() { return m_Wrapper.m_CostumControl; }
+        public ControllerActions(@XRIDefaultInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Key => m_Wrapper.m_Controller_Key;
+        public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CostumControlActions set) { return set.Get(); }
-        public void SetCallbacks(ICostumControlActions instance)
+        public static implicit operator InputActionMap(ControllerActions set) { return set.Get(); }
+        public void SetCallbacks(IControllerActions instance)
         {
-            if (m_Wrapper.m_CostumControlActionsCallbackInterface != null)
+            if (m_Wrapper.m_ControllerActionsCallbackInterface != null)
             {
-                @test.started -= m_Wrapper.m_CostumControlActionsCallbackInterface.OnTest;
-                @test.performed -= m_Wrapper.m_CostumControlActionsCallbackInterface.OnTest;
-                @test.canceled -= m_Wrapper.m_CostumControlActionsCallbackInterface.OnTest;
+                @Key.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnKey;
+                @Key.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnKey;
+                @Key.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnKey;
             }
-            m_Wrapper.m_CostumControlActionsCallbackInterface = instance;
+            m_Wrapper.m_ControllerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @test.started += instance.OnTest;
-                @test.performed += instance.OnTest;
-                @test.canceled += instance.OnTest;
+                @Key.started += instance.OnKey;
+                @Key.performed += instance.OnKey;
+                @Key.canceled += instance.OnKey;
             }
         }
     }
-    public CostumControlActions @CostumControl => new CostumControlActions(this);
+    public ControllerActions @Controller => new ControllerActions(this);
     private int m_GenericXRControllerSchemeIndex = -1;
     public InputControlScheme GenericXRControllerScheme
     {
@@ -3265,8 +3276,8 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         void OnMiddleClick(InputAction.CallbackContext context);
         void OnRightClick(InputAction.CallbackContext context);
     }
-    public interface ICostumControlActions
+    public interface IControllerActions
     {
-        void OnTest(InputAction.CallbackContext context);
+        void OnKey(InputAction.CallbackContext context);
     }
 }

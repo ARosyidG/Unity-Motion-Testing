@@ -25,9 +25,10 @@ public class Box : MonoBehaviour
             endPoint.transform.position = ray.rayOriginTransform.position;
     }
     // Update is called once per frame
-    bool translateInputToggle = false;
+    bool translateInputToggle = true;
     Vector3 directionOfTravel;
     void rotateModel(){
+        
         Vector3 endpointTargetPotition = ray.rayOriginTransform.position + ray.rayOriginTransform.forward*30;
         Vector3 endPointPotition = endPoint.transform.position;
         if(Vector3.Distance(endPointPotition,endpointTargetPotition) > .1f){
@@ -112,12 +113,12 @@ public class Box : MonoBehaviour
         
         // Debug.Log(reticlePosition);
         // Debug.Log(endPointPotition());
-        translateModel();
+        // translateModel();
         // Debug.Log(translateModel());
         // Debug.Log(endPoint.transform.position = ray.rayOriginTransform.position + ray.rayOriginTransform.forward*30);
     }
     public void onTestingTrigerd(InputAction.CallbackContext context){
         Debug.Log("jln");
-        translateModel();
+        rotateModel();
     }
 }
