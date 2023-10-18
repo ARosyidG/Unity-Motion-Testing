@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
@@ -9,8 +11,10 @@ public class InputManager : MonoBehaviour
     private XRIDefaultInputActions .ControllerActions controller;
     public GameObject obj;
     private Tulang tulang;
+    Camera cam;
     void Awake()
     {
+        cam = Camera.main;
         playerInput = new XRIDefaultInputActions();
         controller = playerInput.Controller;  
         tulang = obj.GetComponent<Tulang>();
@@ -29,6 +33,16 @@ public class InputManager : MonoBehaviour
     void FixedUpdate()
     {
         // Debug.Log("asss");
+        // Vector3 camZ = cam.transform.forward;
+        // Vector3 camX = cam.transform.right;
+        // Vector3 camY = cam.transform.up;
+        // // Debug.Log(0*camZ+camX*0+camY*0);
+        // Debug.Log(camX);
+        // Debug.Log(camY);
+        // Debug.Log(camZ);
+        if(controller.Key.triggered){
+            tulang.rotateTriggred();
+        }
         if(controller.Key.IsPressed()){
             tulang.Rotate();
             // Debug.Log("");
