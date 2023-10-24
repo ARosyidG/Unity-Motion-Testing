@@ -2139,6 +2139,24 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Grab"",
+                    ""type"": ""Button"",
+                    ""id"": ""94abac22-d4f8-4260-acd5-f27297300423"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Scale"",
+                    ""type"": ""Button"",
+                    ""id"": ""0e0e9a0a-f6e1-4804-8283-df7a8db505f5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -2163,6 +2181,61 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""action"": ""Key"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""53eaa435-2065-4862-a70b-733cbdcd74e0"",
+                    ""path"": ""<OculusTouchController>{LeftHand}/gripPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""46107b32-3d3e-48d7-8c73-4fc651708e2d"",
+                    ""path"": ""<Keyboard>/period"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""e1442113-349a-462a-8fd7-e3eb457af467"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scale"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""8e3ee2ac-6333-4db8-9ad8-187c039b9117"",
+                    ""path"": ""<OculusTouchController>{LeftHand}/gripPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scale"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""4c312eea-40c8-4a62-9a20-7cdbd39046fe"",
+                    ""path"": ""<OculusTouchController>{RightHand}/gripPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scale"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -2316,6 +2389,8 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         // Controller
         m_Controller = asset.FindActionMap("Controller", throwIfNotFound: true);
         m_Controller_Key = m_Controller.FindAction("Key", throwIfNotFound: true);
+        m_Controller_Grab = m_Controller.FindAction("Grab", throwIfNotFound: true);
+        m_Controller_Scale = m_Controller.FindAction("Scale", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -3128,11 +3203,15 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     private readonly InputActionMap m_Controller;
     private IControllerActions m_ControllerActionsCallbackInterface;
     private readonly InputAction m_Controller_Key;
+    private readonly InputAction m_Controller_Grab;
+    private readonly InputAction m_Controller_Scale;
     public struct ControllerActions
     {
         private @XRIDefaultInputActions m_Wrapper;
         public ControllerActions(@XRIDefaultInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Key => m_Wrapper.m_Controller_Key;
+        public InputAction @Grab => m_Wrapper.m_Controller_Grab;
+        public InputAction @Scale => m_Wrapper.m_Controller_Scale;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -3145,6 +3224,12 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @Key.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnKey;
                 @Key.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnKey;
                 @Key.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnKey;
+                @Grab.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnGrab;
+                @Grab.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnGrab;
+                @Grab.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnGrab;
+                @Scale.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnScale;
+                @Scale.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnScale;
+                @Scale.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnScale;
             }
             m_Wrapper.m_ControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -3152,6 +3237,12 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @Key.started += instance.OnKey;
                 @Key.performed += instance.OnKey;
                 @Key.canceled += instance.OnKey;
+                @Grab.started += instance.OnGrab;
+                @Grab.performed += instance.OnGrab;
+                @Grab.canceled += instance.OnGrab;
+                @Scale.started += instance.OnScale;
+                @Scale.performed += instance.OnScale;
+                @Scale.canceled += instance.OnScale;
             }
         }
     }
@@ -3279,5 +3370,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     public interface IControllerActions
     {
         void OnKey(InputAction.CallbackContext context);
+        void OnGrab(InputAction.CallbackContext context);
+        void OnScale(InputAction.CallbackContext context);
     }
 }

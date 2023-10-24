@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.XR.Interaction.Toolkit;
 public class Tulang : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Tulang : MonoBehaviour
     Vector3 reticleNormal;
     bool translateInputToggle = true;
     Vector3 directionOfTravel;
+    // List<RaycastResult> results = new List<RaycastResult>();
     void Start()
     {
         partContainer= transform.Find("Part");        
@@ -27,7 +29,7 @@ public class Tulang : MonoBehaviour
             TextMeshPro name = Instantiate(sampleText,child);
             name.enabled = true;
             name.gameObject.transform.position = namePosition;
-            name.SetText(child.name);
+            name.SetText("");
             LineRenderer nameLine = name.GetComponent<LineRenderer>();
             nameLine.SetPosition(1,name.transform.position);
             nameLine.SetPosition(0,child.position);
@@ -56,6 +58,10 @@ public class Tulang : MonoBehaviour
             // Debug.Log(nameBox.GetComponent<TextMeshPro>().color);
             nameBox.GetChild(0).GetComponent<MeshRenderer>().material.color = new Color(1,1,1,(nameBoxOpacity-150)/255f);
             nameBox.GetComponent<TextMeshPro>().color = new Color(0,0,0,nameBoxOpacity/255f);
+        }
+        RaycastResult results;
+        if(ray.TryGetCurrentUIRaycastResult(out results)){
+            Debug.Log(results.gameObject.name);
         }
         // transform.Rotate(new Vector3(0,0,10)*Time.deltaTime);
     }
