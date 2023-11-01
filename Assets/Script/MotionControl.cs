@@ -34,6 +34,9 @@ public class MotionControl : MonoBehaviour
     {
         
     }
+    public void RotateZAxisSetUP(){
+
+    }
     public void RotateSetUp(GameObject obj, XRRayInteractor Ray){
         this.ControlledObject = obj;
         print(this.ControlledObject.name);
@@ -58,21 +61,27 @@ public class MotionControl : MonoBehaviour
         this.ControlledObject = obj;
         Ray.TryGetHitInfo(out Vector3 reticlePosition, out Vector3 reticleNormal, out _, out _);
         RayReticle.transform.position= reticlePosition;
+        RayReticle.transform.forward = Ray.rayOriginTransform.forward;
+        RayReticle.transform.right = Ray.rayOriginTransform.right;
+        RayReticle.transform.up = Ray.rayOriginTransform.up;
+        Debug.Log(RayReticle.transform.InverseTransformPoint(ControlledObject.transform.position));
         // Debug.Log(RayReticle.transform.position);
-        RayReticle.transform.forward = LeftController.rayOriginTransform.forward;
+        // RayReticle.transform.forward = LeftController.rayOriginTransform.forward;
         if (obj != null){
             ControlledObjectPositionFromRayReticle = ControlledObject.transform.position - RayReticle.transform.position;
             controllerToReticleDistance = Vector3.Distance(Ray.rayOriginTransform.position, reticlePosition);
         }
     }
+    public void RotatingZAxis(){
+        
+    }
     Vector3 directionOfTravel;
-    public void Rotating(){
+    public void Rotating(XRRayInteractor Ray){
         if(ControlledObject != null){
-            Vector3 endpointTargetPotition = LeftController.rayOriginTransform.position + LeftController.rayOriginTransform.forward*30;
+            Vector3 endpointTargetPotition = Ray.rayOriginTransform.position + Ray.rayOriginTransform.forward*30;
             Vector3 endPointPotition = RayReticle.transform.position;
             if(Vector3.Distance(endPointPotition,endpointTargetPotition) > .1f){
                 directionOfTravel = (Camera.main.WorldToViewportPoint(endpointTargetPotition) - Camera.main.WorldToViewportPoint(endPointPotition))*10;
-                // directionOfTravel.Normalize();
                 RayReticle.transform.Translate(directionOfTravel * 5 * Time.deltaTime, Space.World);
             }else{
                 directionOfTravel = new Vector3(0,0,0);
@@ -80,19 +89,9 @@ public class MotionControl : MonoBehaviour
             Vector3 cameraX = Camera.main.transform.right;
             Vector3 cameraY = Camera.main.transform.up;
             Vector3 cameraZ = Camera.main.transform.forward;
-
-            // Rigidbody endpointrb = endPoint.GetComponent<Rigidbody>();
             Vector3 cameraRelativeX = directionOfTravel.y * cameraX;
             Vector3 cameraRelativeY = directionOfTravel.x * -1 * cameraY;
-            // Vector3 cameraRelativeY = directionOfTravel.y * cameraY;
-            
-            // Vector3 cameraRelativeZ = directionOfTravel.z *cameraZ;
-            // Debug.Log(Camera.main.WorldToScreenPoint(endPoint.transform.position));
-            // Vector3 cameraRelativeY = Input.GetAxis("Mouse Y") * cameraY;
             Vector3 controllerMotionInput = (cameraRelativeX + cameraRelativeY ); 
-            // return endpointrb.velocity;
-            // Debug.Log(endPoint.GetComponent<Rigidbody>().velocity);
-            // Debug.Log(controllerMotionInput);
             ControlledObject.transform.Rotate(controllerMotionInput * 30 * Time.deltaTime,Space.World);
         }else{
             Debug.Log("null");
@@ -105,22 +104,28 @@ public class MotionControl : MonoBehaviour
             LeftRayReticle.transform.position = LeftController.rayOriginTransform.position + (LeftController.rayOriginTransform.forward * LeftControllerToReticleDistance);
             RightRayReticle.transform.position = RightController.rayOriginTransform.position + (RightController.rayOriginTransform.forward * RightControllerToReticleDistance);
             if(LeftController.TryGetHitInfo(out Vector3 LeftreticlePosition, out Vector3 LeftreticleNormal, out _, out _) && RightController.TryGetHitInfo(out Vector3 RightreticlePosition, out Vector3 RightreticleNormal, out _, out _)){
-                ControlledObject.transform.localScale = controlledObjectScaleInBeginingOfScaling * (Vector3.Distance(LeftreticlePosition,RightreticlePosition)/DistanceBetweenReticleInBeginingOfScaling);
-            } 
-            
-            
+                Vector3 Scale = controlledObjectScaleInBeginingOfScaling * (Vector3.Distance(LeftreticlePosition,RightreticlePosition)/DistanceBetweenReticleInBeginingOfScaling);
+                float ScaleX = Mathf.Clamp(Scale.x,0.1f, 2.0f);
+                float ScaleY = Mathf.Clamp(Scale.y,0.1f, 2.0f);
+                float ScaleZ = Mathf.Clamp(Scale.z,0.1f, 2.0f);
+                ControlledObject.transform.localScale = new Vector3(ScaleX,ScaleY,ScaleZ);
+            }
         }
     }
-    public void Translating(){
+    public void Translating(XRRayInteractor Ray){
         if(ControlledObject != null){
-            RayReticle.transform.position = LeftController.rayOriginTransform.position + (LeftController.rayOriginTransform.forward * controllerToReticleDistance); 
-            RayReticle.transform.forward = LeftController.rayOriginTransform.forward;
+            RayReticle.transform.position = Ray.rayOriginTransform.position + (Ray.rayOriginTransform.forward * controllerToReticleDistance); 
+            RayReticle.transform.forward = Ray.rayOriginTransform.forward;
             Vector3 transformXAxisOfControlledObjecToReticle = ControlledObjectPositionFromRayReticle.x * RayReticle.transform.right;
             Vector3 transformYAxisOfControlledObjecToReticle = ControlledObjectPositionFromRayReticle.y * RayReticle.transform.up;
             Vector3 transformZAxisOfControlledObjecToReticle = ControlledObjectPositionFromRayReticle.z * RayReticle.transform.forward;
             Vector3 transformedAxisOfControlledObjecToReticle = (transformXAxisOfControlledObjecToReticle+transformYAxisOfControlledObjecToReticle+transformZAxisOfControlledObjecToReticle);
+            // Debug.Log(ControlledObject.transform.localEulerAngles);
             // Vector3 ControlledObjectZAxisFromReticlePerspectiveZ = ControlledObject.transform.forward * RayReticle.transform.forward.z;
             ControlledObject.transform.position = RayReticle.transform.position + transformedAxisOfControlledObjecToReticle;
         }
+    }
+    public void Zoom(Vector2 ZoomValue){
+        controllerToReticleDistance = Mathf.Clamp(controllerToReticleDistance + (ZoomValue.y * 0.3f),0.0f, 30.0f);
     }
 }

@@ -2110,7 +2110,7 @@
             "id": "0388e47a-ac96-46ba-95e8-6b6ecf3455bd",
             "actions": [
                 {
-                    "name": "Key",
+                    "name": "LeftControllerRotate",
                     "type": "Button",
                     "id": "f7522340-8b38-4717-b67b-2c8e80d58466",
                     "expectedControlType": "Button",
@@ -2119,9 +2119,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Grab",
+                    "name": "RightControllerRotate",
+                    "type": "Button",
+                    "id": "e5368a19-77de-49ed-acf7-7ed8cae0dcff",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LeftControllerGrab",
                     "type": "Button",
                     "id": "94abac22-d4f8-4260-acd5-f27297300423",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightControllerGrab",
+                    "type": "Button",
+                    "id": "a0d29dc2-b41f-4c92-98c1-884dbbd4813d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -2135,20 +2153,45 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "RotateZAxis",
+                    "type": "Button",
+                    "id": "91a969dd-10a2-42f9-8d3b-ac2ce0cd84e3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TriggerPress",
+                    "type": "Button",
+                    "id": "f41df631-e0e6-40ae-ae66-0d49bf3960ab",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GripPress",
+                    "type": "Button",
+                    "id": "59acca96-75d3-44e1-86f0-d004b0f02b90",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ZOOM",
+                    "type": "Value",
+                    "id": "d3dee8c9-8bd2-4cb8-a6cc-d5083a733b57",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "ab6e7d77-241a-43fc-96b0-2f7f88deb3fc",
-                    "path": "<Keyboard>/slash",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Continuous Move",
-                    "action": "Key",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "f237a29f-b252-417c-ad3f-f6c7a8010195",
@@ -2156,7 +2199,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Continuous Move",
-                    "action": "Key",
+                    "action": "LeftControllerRotate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -2167,7 +2210,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Grab",
+                    "action": "LeftControllerGrab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -2178,7 +2221,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Grab",
+                    "action": "LeftControllerGrab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -2214,6 +2257,192 @@
                     "action": "Scale",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "ab6e7d77-241a-43fc-96b0-2f7f88deb3fc",
+                    "path": "<Keyboard>/slash",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Continuous Move",
+                    "action": "LeftControllerRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "21725467-8717-478d-ac7b-1bba20e9a646",
+                    "path": "<OculusTouchController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TriggerPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "528337aa-a43b-448b-8991-f14b607d9918",
+                    "path": "<OculusTouchController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GripPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1c261f40-5e62-40dd-a7d3-91f7a68a17c8",
+                    "path": "<OculusTouchController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightControllerRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3ec7f787-7534-44f6-901b-504e31ffd153",
+                    "path": "<OculusTouchController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightControllerGrab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "8a7c62bb-a610-4e5a-9ee8-baabd3509c6b",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateZAxis",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "2117c8e8-2c43-4ad8-b9c8-86dd24594387",
+                    "path": "<OculusTouchController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateZAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "d11dddfc-5d27-4a97-bda9-7e9032ce5172",
+                    "path": "<OculusTouchController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateZAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "84a1a12f-4032-4604-b64e-83f4abb7c89d",
+                    "path": "<OculusTouchController>{LeftHand}/thumbstick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ZOOM",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "12bbb60f-026a-47c8-92e4-ad78b873dcd9",
+                    "path": "<OculusTouchController>{RightHand}/thumbstick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ZOOM",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "RightController",
+            "id": "bda6eed0-be99-4faf-bf15-f6c1da6403dc",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "e91cbd49-8559-4a12-b58d-c085c6b8c81e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "979b7897-4a46-4b9f-90fb-23746a7b96c1",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Mencocokkan",
+            "id": "3ddbdbbe-f31d-4797-b46d-fc4e786aec4f",
+            "actions": [
+                {
+                    "name": "LeftControllerGrab",
+                    "type": "Button",
+                    "id": "08450e22-6bf3-4c84-86d7-db8bfcd052f9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightControllerGrab",
+                    "type": "Button",
+                    "id": "e2f69768-766c-4b0c-8e7b-913077c4aff6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c828c65b-762c-4bac-95f2-19aeb191313e",
+                    "path": "<OculusTouchController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftControllerGrab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "37b802ec-8057-4cef-bf73-07e90c12103b",
+                    "path": "<OculusTouchController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightControllerGrab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
@@ -2276,6 +2505,11 @@
                     "isOR": false
                 }
             ]
+        },
+        {
+            "name": "New control scheme",
+            "bindingGroup": "New control scheme",
+            "devices": []
         }
     ]
 }

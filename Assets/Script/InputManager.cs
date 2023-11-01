@@ -5,6 +5,8 @@ using TMPro;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class InputManager : MonoBehaviour
@@ -12,20 +14,21 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     public GameObject grabPlane;
     private XRIDefaultInputActions playerInput;
-    private XRIDefaultInputActions .ControllerActions controller;
+    private XRIDefaultInputActions .ControllerActions Controller;
     public GameObject obj;
     private Tulang tulang;
     Camera cam;
     GameObject daftar;
     MotionControl MotionControl;
-    public XRRayInteractor LeftController;
-    public XRRayInteractor RightController;
+
+    public XRRayInteractor LeftRay;
+    public XRRayInteractor RightRay;
     void Awake()
     {
 
         cam = Camera.main;
         playerInput = new XRIDefaultInputActions();
-        controller = playerInput.Controller;  
+        Controller = playerInput.Controller;  
         tulang = obj.GetComponent<Tulang>();
         MotionControl = GetComponent<MotionControl>();
     }
@@ -34,19 +37,20 @@ public class InputManager : MonoBehaviour
     }
     private void OnEnable(){
         Debug.Log("enable");
-        controller.Enable();
+        Controller.Enable();
     }
     private void OnDisable(){
-        controller.Disable();
+        Controller.Disable();
     }
     GameObject drag;
     // Update is called once per frame
     void Update()
     {
-        if(controller.Scale.WasPressedThisFrame()){
+        //Scale and Grab
+        if(Controller.Scale.WasPressedThisFrame()){
             Debug.Log("JALAN");
-            LeftController.TryGetCurrent3DRaycastHit(out RaycastHit LefthitInfo);
-            RightController.TryGetCurrent3DRaycastHit(out RaycastHit RighthitInfo);
+            LeftRay.TryGetCurrent3DRaycastHit(out RaycastHit LefthitInfo);
+            RightRay.TryGetCurrent3DRaycastHit(out RaycastHit RighthitInfo);
             GameObject controlledObject = null;
             if(LefthitInfo.transform != null){
                 controlledObject = LefthitInfo.transform.gameObject;  
@@ -59,33 +63,60 @@ public class InputManager : MonoBehaviour
             }else {
                 MotionControl.ScaleSetUp(null);
             }
-        }else if(controller.Grab.WasPerformedThisFrame()){
-            LeftController.TryGetCurrent3DRaycastHit(out RaycastHit hitInfo);
+        }else if(Controller.LeftControllerGrab.WasPerformedThisFrame() || Controller.RightControllerGrab.WasPerformedThisFrame()){
+            XRRayInteractor Ray = null;
+            if(Controller.LeftControllerGrab.WasPressedThisFrame()){
+                Ray = LeftRay;
+            }else if(Controller.RightControllerGrab.WasPressedThisFrame()){
+                Ray = RightRay;
+            }
+            Debug.Log(Ray);
+            Ray.TryGetCurrent3DRaycastHit(out RaycastHit hitInfo);
             if(hitInfo.transform != null && hitInfo.transform.gameObject.layer == 3){
-                MotionControl.TranslateSetUp(hitInfo.transform.gameObject, LeftController);
+                MotionControl.TranslateSetUp(hitInfo.transform.gameObject, Ray);
             }else {
-                MotionControl.TranslateSetUp(null, LeftController);
+                MotionControl.TranslateSetUp(null, Ray);
             }
         }
-        if (controller.Scale.IsPressed()){
-            // Debug.Log("Scaling");
+        if (Controller.Scale.IsPressed()){
             MotionControl.Scalling();
-        }else if(controller.Grab.IsPressed()){
-            MotionControl.Translating();
+        }else if(Controller.LeftControllerGrab.IsPressed()){
+            MotionControl.Translating(LeftRay);
+            MotionControl.Zoom(Controller.ZOOM.ReadValue<Vector2>());
+        }else if(Controller.RightControllerGrab.IsPressed()){
+            MotionControl.Translating(RightRay);
+            MotionControl.Zoom(Controller.ZOOM.ReadValue<Vector2>());
         }
-        if(controller.Key.WasPressedThisFrame()){
-            Debug.Log("jln");
-            LeftController.TryGetCurrent3DRaycastHit(out RaycastHit hitInfo);
+
+        //Rotate
+        if(Controller.RotateZAxis.WasPressedThisFrame()){
+
+        }else if(Controller.LeftControllerRotate.WasPressedThisFrame() || Controller.RightControllerRotate.WasPressedThisFrame()){
+            XRRayInteractor Ray = null;
+            if(Controller.LeftControllerRotate.WasPressedThisFrame()){
+                Ray = LeftRay;
+            }else if(Controller.RightControllerRotate.WasPressedThisFrame()){
+                Ray = RightRay;
+            }
+            Debug.Log(Ray);
+            Ray.TryGetCurrent3DRaycastHit(out RaycastHit hitInfo);
             if(hitInfo.transform != null && hitInfo.transform.gameObject.layer == 3){
-                MotionControl.RotateSetUp(hitInfo.transform.gameObject, LeftController);
+                MotionControl.RotateSetUp(hitInfo.transform.gameObject, Ray);
             }else {
-                MotionControl.RotateSetUp(null, LeftController);
+                MotionControl.RotateSetUp(null, Ray);
             }
         }
-        if(controller.Key.IsPressed()){
-            MotionControl.Rotating();
-            // Debug.Log("");
+        if(Controller.RotateZAxis.IsPressed()){
+
+        }else if(Controller.LeftControllerRotate.IsPressed()){
+            MotionControl.Rotating(LeftRay);
+        }else if(Controller.RightControllerRotate.IsPressed()){
+            MotionControl.Rotating(RightRay);
         }
+        // Debug.Log(Controller.ZOOM.ReadValue<Vector2>());
+    }
+    
+    public void input(InputAction.CallbackContext context){
         
     }
 }
