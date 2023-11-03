@@ -128,4 +128,6 @@ public class MotionControl : MonoBehaviour
     public void Zoom(Vector2 ZoomValue){
         controllerToReticleDistance = Mathf.Clamp(controllerToReticleDistance + (ZoomValue.y * 0.3f),0.0f, 30.0f);
     }
+    
+    
 }

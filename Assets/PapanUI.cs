@@ -11,6 +11,7 @@ public class PapanUI : MonoBehaviour
     
     GameObject TextTemplate;
     public GameObject tulang;
+    List<GameObject> NamePlates = new List<GameObject>(); 
     void Start()
     {
         Transform partContainer= tulang.transform.Find("Part");
@@ -19,16 +20,28 @@ public class PapanUI : MonoBehaviour
         
         foreach(Transform child in partContainer.transform){
             Debug.Log(child.name);
-            GameObject name = Instantiate(TextTemplate,Content);
-            name.SetActive(true);
-            name.transform.Find("Tamplate").GetComponent<TextMeshProUGUI>().text = child.name;
-            name.transform.Find("Tamplate").name = child.name;
+            GameObject NamePlate = Instantiate(TextTemplate,Content);
+            NamePlate.SetActive(true);
+            NamePlate.transform.Find("Tamplate").GetComponent<TextMeshProUGUI>().text = child.name;
+            NamePlate.transform.Find("Tamplate").name = child.name;
+            NamePlates.Add(NamePlate);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //#ECD4D4
     }
+    // Color notSelectedColor = new Color(236f/255f,212f/255f,212/255f, 0.0f);
+    // public void NamePlateColorChange(GameObject SelectedNamePlate, bool isSelected){
+    //     if(isSelected){
+    //         SelectedNamePlate.GetComponentInParent<Image>().color = new Color(236f/255f,212f/255f,212/255f, 0.7f);
+    //     }else{
+    //         Debug.Log("nothing selected");
+    //         foreach(GameObject NamePlate in NamePlates){
+    //             NamePlate.GetComponent<Image>().color = notSelectedColor;
+    //         }
+    //     }
+    // }
 }

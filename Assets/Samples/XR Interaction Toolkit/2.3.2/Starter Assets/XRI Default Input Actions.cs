@@ -2457,6 +2457,17 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": """",
+                    ""id"": ""dd8dceae-7ecb-49ac-ad16-cfd73a7b44e9"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftControllerGrab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""37b802ec-8057-4cef-bf73-07e90c12103b"",
                     ""path"": ""<OculusTouchController>{RightHand}/gripPressed"",
                     ""interactions"": """",

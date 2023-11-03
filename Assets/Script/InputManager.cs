@@ -12,24 +12,26 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class InputManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject grabPlane;
     private XRIDefaultInputActions playerInput;
     private XRIDefaultInputActions .ControllerActions Controller;
-    public GameObject obj;
-    private Tulang tulang;
+    private XRIDefaultInputActions .MencocokkanActions Mencocokkan;
     Camera cam;
-    GameObject daftar;
     MotionControl MotionControl;
-
+    public GameObject GrabableNamePlate; 
     public XRRayInteractor LeftRay;
     public XRRayInteractor RightRay;
+    PapanUI UI;
+    public GameObject papanUI;
+    public XRRayInteractor ActiveRay = null;
     void Awake()
     {
-
+// 
         cam = Camera.main;
+        // UI.NamePlateColorChange(cam.transform);
+        UI = papanUI.GetComponent<PapanUI>();
         playerInput = new XRIDefaultInputActions();
-        Controller = playerInput.Controller;  
-        tulang = obj.GetComponent<Tulang>();
+        Controller = playerInput.Controller;
+        Mencocokkan = playerInput.Mencocokkan;
         MotionControl = GetComponent<MotionControl>();
     }
     void start(){
@@ -38,9 +40,11 @@ public class InputManager : MonoBehaviour
     private void OnEnable(){
         Debug.Log("enable");
         Controller.Enable();
+        Mencocokkan.Enable();
     }
     private void OnDisable(){
         Controller.Disable();
+        Mencocokkan.Disable();
     }
     GameObject drag;
     // Update is called once per frame
@@ -113,9 +117,43 @@ public class InputManager : MonoBehaviour
         }else if(Controller.RightControllerRotate.IsPressed()){
             MotionControl.Rotating(RightRay);
         }
-        // Debug.Log(Controller.ZOOM.ReadValue<Vector2>());
+        RaycastResult Result;
+        if(LeftRay.TryGetCurrentUIRaycastResult(out Result)){
+            if(Mencocokkan.LeftControllerGrab.WasPressedThisFrame() && ActiveRay == null){
+                ActiveRay = LeftRay; 
+                SetPartName(LeftRay, Result);
+                MotionControl.TranslateSetUp(GrabableNamePlate,LeftRay);
+                // Controller.Disable();
+            }
+        }
+        if(Mencocokkan.LeftControllerGrab.IsPressed()){
+            MotionControl.Translating(LeftRay);
+        }
+        if(ActiveRay == LeftRay && Mencocokkan.LeftControllerGrab.WasReleasedThisFrame()){
+            Controller.Enable();
+            ActiveRay = null;
+            GrabableNamePlate.transform.position = new Vector3(-1,-5,-1);
+        }
+        // if(Mencocokkan.LeftControllerGrab.WasPressedThisFrame()){
+        //     Controller.Disable();
+        //     GetPartName(LeftRay);
+        // }else if(Mencocokkan.RightControllerGrab.WasPressedThisFrame()){
+        //     Controller.Disable();
+        //     GetPartName(LeftRay);
+        // }
+        // if(Mencocokkan.LeftControllerGrab.WasReleasedThisFrame()){
+        //     Controller.Enable();
+        // }else if(Mencocokkan.RightControllerGrab.WasReleasedThisFrame()){
+        //     Controller.Enable();
+        // }
+        
     }
-    
+    private void SetPartName(XRRayInteractor Ray, RaycastResult Result){
+        GrabableNamePlate.transform.Find("NamePlate").Find("Tamplate").GetComponent<TextMeshProUGUI>().SetText(Result.gameObject.name);
+        GrabableNamePlate.transform.position = Result.gameObject.transform.position;
+        GrabableNamePlate.transform.rotation = Result.gameObject.transform.rotation;
+        Debug.Log("Berhasil");
+    }
     public void input(InputAction.CallbackContext context){
         
     }

@@ -59,10 +59,7 @@ public class Tulang : MonoBehaviour
             nameBox.GetChild(0).GetComponent<MeshRenderer>().material.color = new Color(1,1,1,(nameBoxOpacity-150)/255f);
             nameBox.GetComponent<TextMeshPro>().color = new Color(0,0,0,nameBoxOpacity/255f);
         }
-        RaycastResult results;
-        if(ray.TryGetCurrentUIRaycastResult(out results)){
-            Debug.Log(results.gameObject.name);
-        }
+        
         // transform.Rotate(new Vector3(0,0,10)*Time.deltaTime);
     }
     public void rotateTriggred(){
