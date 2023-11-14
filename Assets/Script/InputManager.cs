@@ -6,6 +6,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR.Haptics;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -23,9 +24,11 @@ public class InputManager : MonoBehaviour
     PapanUI UI;
     public GameObject papanUI;
     public XRRayInteractor ActiveRay = null;
+    [SerializeField]Tulang tulang;
+    GamePlay gamePlay;
     void Awake()
     {
-// 
+        gamePlay = GetComponent<GamePlay>(); 
         cam = Camera.main;
         // UI.NamePlateColorChange(cam.transform);
         UI = papanUI.GetComponent<PapanUI>();
@@ -50,6 +53,9 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Space)){
+            tulang.NamePlateSwitch();
+        }
         //Scale and Grab
         if(Controller.Scale.WasPressedThisFrame()){
             Debug.Log("JALAN");
@@ -74,11 +80,12 @@ public class InputManager : MonoBehaviour
             }else if(Controller.RightControllerGrab.WasPressedThisFrame()){
                 Ray = RightRay;
             }
-            Debug.Log(Ray);
+            // Debug.Log(Ray);
             Ray.TryGetCurrent3DRaycastHit(out RaycastHit hitInfo);
             if(hitInfo.transform != null && hitInfo.transform.gameObject.layer == 3){
+                // Debug.Log(hitInfo.transform);
                 MotionControl.TranslateSetUp(hitInfo.transform.gameObject, Ray);
-            }else {
+            }else if(hitInfo.transform.gameObject.layer == 3){
                 MotionControl.TranslateSetUp(null, Ray);
             }
         }
@@ -102,7 +109,7 @@ public class InputManager : MonoBehaviour
             }else if(Controller.RightControllerRotate.WasPressedThisFrame()){
                 Ray = RightRay;
             }
-            Debug.Log(Ray);
+            // Debug.Log(Ray);
             Ray.TryGetCurrent3DRaycastHit(out RaycastHit hitInfo);
             if(hitInfo.transform != null && hitInfo.transform.gameObject.layer == 3){
                 MotionControl.RotateSetUp(hitInfo.transform.gameObject, Ray);
@@ -119,20 +126,39 @@ public class InputManager : MonoBehaviour
         }
         RaycastResult Result;
         if(LeftRay.TryGetCurrentUIRaycastResult(out Result)){
-            if(Mencocokkan.LeftControllerGrab.WasPressedThisFrame() && ActiveRay == null){
+            // Debug.Log(Result);
+            Controller.Disable();
+            if(Mencocokkan.LeftControllerGrab.WasPressedThisFrame() && ActiveRay == null && Result.gameObject.layer == 6){
                 ActiveRay = LeftRay; 
-                SetPartName(LeftRay, Result);
+                SetPartName(GrabableNamePlate, Result);
                 MotionControl.TranslateSetUp(GrabableNamePlate,LeftRay);
-                // Controller.Disable();
+                tulang.NamePlateSwitch();
+                // Debug.Log("lll");
             }
+        }else if (RightRay.TryGetCurrentUIRaycastResult(out Result)){
+            Controller.Disable();
+            if(Mencocokkan.RightControllerGrab.WasPressedThisFrame() && ActiveRay == null && Result.gameObject.layer == 6){
+                ActiveRay = RightRay; 
+                SetPartName(GrabableNamePlate, Result);
+                MotionControl.TranslateSetUp(GrabableNamePlate,RightRay);
+                tulang.NamePlateSwitch();
+            }
+        }else{
+            Controller.Enable();
         }
-        if(Mencocokkan.LeftControllerGrab.IsPressed()){
+        if(Mencocokkan.LeftControllerGrab.IsPressed() && ActiveRay == LeftRay){
             MotionControl.Translating(LeftRay);
+        }else if(Mencocokkan.RightControllerGrab.IsPressed() && ActiveRay == RightRay){
+            MotionControl.Translating(RightRay);
         }
         if(ActiveRay == LeftRay && Mencocokkan.LeftControllerGrab.WasReleasedThisFrame()){
+            gamePlay.SetNameOfPlateNameOnBone(LeftRay);
             Controller.Enable();
             ActiveRay = null;
-            GrabableNamePlate.transform.position = new Vector3(-1,-5,-1);
+        }else if(ActiveRay == RightRay && Mencocokkan.RightControllerGrab.WasReleasedThisFrame()){
+            gamePlay.SetNameOfPlateNameOnBone(RightRay);
+            Controller.Enable();
+            ActiveRay = null;
         }
         // if(Mencocokkan.LeftControllerGrab.WasPressedThisFrame()){
         //     Controller.Disable();
@@ -148,13 +174,13 @@ public class InputManager : MonoBehaviour
         // }
         
     }
-    private void SetPartName(XRRayInteractor Ray, RaycastResult Result){
+    private void SetPartName(GameObject NamePlate, RaycastResult Result){
         GrabableNamePlate.transform.Find("NamePlate").Find("Tamplate").GetComponent<TextMeshProUGUI>().SetText(Result.gameObject.name);
         GrabableNamePlate.transform.position = Result.gameObject.transform.position;
         GrabableNamePlate.transform.rotation = Result.gameObject.transform.rotation;
         Debug.Log("Berhasil");
     }
     public void input(InputAction.CallbackContext context){
-        
+
     }
 }

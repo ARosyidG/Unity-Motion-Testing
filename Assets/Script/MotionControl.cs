@@ -22,11 +22,12 @@ public class MotionControl : MonoBehaviour
     float DistanceBetweenReticleInBeginingOfScaling;
     Vector3 controlledObjectScaleInBeginingOfScaling;
 
+
     void Start()
     {
-        RayReticle = new GameObject();
-        LeftRayReticle = new GameObject();
-        RightRayReticle = new GameObject();
+        RayReticle = new GameObject("RayReticle");
+        LeftRayReticle = new GameObject("LeftRayReticle");
+        RightRayReticle = new GameObject("RightRayReticle");
     }
 
     // Update is called once per frame
@@ -105,9 +106,9 @@ public class MotionControl : MonoBehaviour
             RightRayReticle.transform.position = RightController.rayOriginTransform.position + (RightController.rayOriginTransform.forward * RightControllerToReticleDistance);
             if(LeftController.TryGetHitInfo(out Vector3 LeftreticlePosition, out Vector3 LeftreticleNormal, out _, out _) && RightController.TryGetHitInfo(out Vector3 RightreticlePosition, out Vector3 RightreticleNormal, out _, out _)){
                 Vector3 Scale = controlledObjectScaleInBeginingOfScaling * (Vector3.Distance(LeftreticlePosition,RightreticlePosition)/DistanceBetweenReticleInBeginingOfScaling);
-                float ScaleX = Mathf.Clamp(Scale.x,0.1f, 2.0f);
-                float ScaleY = Mathf.Clamp(Scale.y,0.1f, 2.0f);
-                float ScaleZ = Mathf.Clamp(Scale.z,0.1f, 2.0f);
+                float ScaleX = Mathf.Clamp(Scale.x,1.0f, 5.0f);
+                float ScaleY = Mathf.Clamp(Scale.y,1.0f, 5.0f);
+                float ScaleZ = Mathf.Clamp(Scale.z,1.0f, 5.0f);
                 ControlledObject.transform.localScale = new Vector3(ScaleX,ScaleY,ScaleZ);
             }
         }
