@@ -8,11 +8,12 @@ using UnityEngine.XR.Interaction.Toolkit;
 using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine.XR.Interaction.Toolkit.UI;
+using JetBrains.Annotations;
 
 public class NamePlate : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Boolean answer;
+    private Boolean answer = false;
     private Boolean isAnswered = false;
     void Awake()
     {
@@ -53,5 +54,14 @@ public class NamePlate : MonoBehaviour
                 nameBox.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0,0,0,nameBoxOpacity/255f);
             }
         }
+        
+    }
+    public void setAnswer(){
+        if(transform.parent.name == transform.GetChild(0).GetChild(0).name){
+            answer = true;
+        }
+    }
+    public Boolean getAnswer(){
+        return this.answer;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -17,17 +18,26 @@ public class GamePlay : MonoBehaviour
     // Transform partContainer;
     [SerializeField]
     Bone bone;
-    
+    [SerializeField]
+    GameObject PapanUI;
+    Button SubmitAnswerButton; 
+    TextMeshProUGUI PapanNilai;
     // Start is called before the first frame update
     void Start()
     {
-        
+        SubmitAnswerButton = PapanUI.transform.Find("BSubmitAnswer").GetComponent<Button>();
+        SubmitAnswerButton.onClick.AddListener(SubmitAnswer);
     }
 
     // Update is called once per frame
+    void SubmitAnswer(){
+        float score = getScore();
+        PapanNilai = PapanUI.transform.Find("PapanNilai").GetComponent<TextMeshProUGUI>();
+        PapanNilai.text = "Nilai : " + score;
+    }
     void Update()
     {
-        
+
     }
 
     public void SetNameOfPlateNameOnBone(XRRayInteractor Ray){
@@ -50,11 +60,15 @@ public class GamePlay : MonoBehaviour
         GrabableNamePlate.transform.rotation = Result.gameObject.transform.rotation;
         Debug.Log("Berhasil");
     }
-    public int getScore(){
+    public float getScore(){
         Transform partContainer = bone.TheBone.transform.Find("Part");
-        int score = 0;
+        float score = 0.0f;
         foreach(Transform part in partContainer){
-            
+            NamePlate namePlate =part.GetChild(0).GetComponent<NamePlate>(); 
+            namePlate.setAnswer();
+            if(namePlate.getAnswer()){
+                score += (100/partContainer.childCount);
+            }
         }
         return score;
     }

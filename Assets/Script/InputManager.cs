@@ -24,7 +24,7 @@ public class InputManager : MonoBehaviour
     PapanUI UI;
     public GameObject papanUI;
     public XRRayInteractor ActiveRay = null;
-    [SerializeField]Tulang tulang;
+    [SerializeField]Bone tulang;
     GamePlay gamePlay;
     void Awake()
     {
