@@ -21,7 +21,7 @@ public class MotionControl : MonoBehaviour
     public XRRayInteractor RightController;
     float DistanceBetweenReticleInBeginingOfScaling;
     Vector3 controlledObjectScaleInBeginingOfScaling;
-
+    
 
     void Start()
     {

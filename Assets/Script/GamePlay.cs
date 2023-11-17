@@ -1,16 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.Interaction.Toolkit.UI;
+
 public class GamePlay : MonoBehaviour
 {
     [SerializeField]
@@ -19,14 +14,22 @@ public class GamePlay : MonoBehaviour
     [SerializeField]
     Bone bone;
     [SerializeField]
+    GameObject SelectedBone;
+    [SerializeField]
     GameObject PapanUI;
     Button SubmitAnswerButton; 
     TextMeshProUGUI PapanNilai;
+    [SerializeField]
+    GameObject partSelection;
+    Boolean isBoneSelected = false;
     // Start is called before the first frame update
     void Start()
     {
         SubmitAnswerButton = PapanUI.transform.Find("BSubmitAnswer").GetComponent<Button>();
         SubmitAnswerButton.onClick.AddListener(SubmitAnswer);
+        changeBone(partSelection);
+        // changeBone(SelectedBone);
+        
     }
 
     // Update is called once per frame
@@ -52,6 +55,16 @@ public class GamePlay : MonoBehaviour
         }
         GrabableNamePlate.transform.position = new Vector3(-1,-5,-1);
         bone.NamePlateSwitch();
+        if (!isBoneSelected){
+            if(RNamePlate.gameObject != null){
+                NamePlate namePlate = RNamePlate.gameObject.transform.parent.parent.GetComponent<NamePlate>();
+                namePlate.setAnswer();
+                if (namePlate.getAnswer()){
+                    changeBone(partSelection.transform.Find("Part").Find(RNamePlate.gameObject.name).gameObject);
+                }
+                isBoneSelected = true;
+            }
+        }
     }
 
     public void SetPartName(GameObject NamePlate, RaycastResult Result){
@@ -64,12 +77,56 @@ public class GamePlay : MonoBehaviour
         Transform partContainer = bone.TheBone.transform.Find("Part");
         float score = 0.0f;
         foreach(Transform part in partContainer){
-            NamePlate namePlate =part.GetChild(0).GetComponent<NamePlate>(); 
+            NamePlate namePlate = part.Find("NamePlatePointer").GetComponent<NamePlate>(); 
             namePlate.setAnswer();
             if(namePlate.getAnswer()){
                 score += (100/partContainer.childCount);
             }
+            Debug.Log(score);
         }
         return score;
+    }
+    public void changeBone(GameObject SelectedBone){
+        if (bone.TheBone != null){
+            Destroy(bone.TheBone);
+        }
+        bone.TheBone = Instantiate(SelectedBone, bone.transform);
+        bone.TheBone.name = SelectedBone.name;
+        Vector3 BonePosition = new Vector3(0,0,0);
+        if(bone.TheBone.name == "PartSelection"){
+            BonePosition = partSelection.transform.position;
+        }else{
+            // bone.TheBone.transform.localScale = bone.TheBone.transform.localScale*24;
+            BonePosition = partSelection.transform.Find("Part").Find(SelectedBone.name).position;
+        }
+        bone.TheBone.transform.position = BonePosition;
+        bone.TheBone.SetActive(true);
+        
+        bone.setBoneNamePlate();
+        setNameList();
+    }
+    private void setNameList(){
+        Transform Content = PapanUI.transform.Find("Scroll").Find("Content");
+        Transform ContentTamplate = PapanUI.transform.Find("Scroll").Find("ContentTemplate");
+        if(Content != null){
+            Destroy(Content.gameObject);
+            Content = null;
+        }
+        if(Content == null){
+            Content = Instantiate(ContentTamplate, PapanUI.transform.Find("Scroll"));
+            Content.name = "Content";
+            Content.gameObject.SetActive(true);
+            Content.parent.GetComponent<ScrollRect>().content = Content.GetComponent<RectTransform>();
+            Transform partContainer= bone.TheBone.transform.Find("Part");
+            GameObject TextTemplate = Content.transform.Find("DaftarNama").gameObject;
+            foreach(Transform child in partContainer.transform){
+                Debug.Log(child.name);
+                GameObject NamePlate = Instantiate(TextTemplate,Content);
+                NamePlate.SetActive(true);
+                NamePlate.transform.Find("Tamplate").GetComponent<TextMeshProUGUI>().text = child.name;
+                NamePlate.transform.Find("Tamplate").name = child.name;
+                // NamePlates.Add(NamePlate);
+            }
+        }
     }
 }

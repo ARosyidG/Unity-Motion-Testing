@@ -7,19 +7,20 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.UI;
+using Unity.XR.CoreUtils;
 
 public class Bone : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject TheBone;
-    [SerializeField]
-    GameObject SelectedBone;
+    
     Transform partContainer;
     [SerializeField]
     GameObject NamePlate;
+    
     void Start()
     {
-        changeBone(SelectedBone);
+        
         
     }
 
@@ -27,30 +28,31 @@ public class Bone : MonoBehaviour
     void Update()
     {
     }
-    private void setBoneNamePlate(){
+    public void setBoneNamePlate(){
+        GameObject NamePlateTemp = Instantiate(this.NamePlate);
+        Debug.Log(TheBone);
+        NamePlateTemp.transform.localScale = new Vector3(1.5f/TheBone.transform.localScale.x,1.5f/TheBone.transform.localScale.y,1.5f/TheBone.transform.localScale.z);
         partContainer = TheBone.transform.Find("Part");
         foreach(Transform child in partContainer.transform){
             Vector3 namePosition = child.position + (child.forward*2);
-            GameObject name = Instantiate(NamePlate,child);
-            // name.enabled = true;
+            GameObject name = Instantiate(NamePlateTemp,child);
+            name.SetActive(true);
+            name.name = "NamePlatePointer";
             name.gameObject.transform.position = namePosition;
             name.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().SetText("");
             LineRenderer nameLine = name.GetComponent<LineRenderer>();
             nameLine.SetPosition(1,name.transform.position);
             nameLine.SetPosition(0,child.position);
         }
+        Destroy(NamePlateTemp);
     }
-    public void changeBone(GameObject SelectedBone){
-        if (TheBone != null){
-            Destroy(TheBone);
-        }
-        TheBone = Instantiate(SelectedBone, this.transform);
-        TheBone.SetActive(true);
-        setBoneNamePlate();
-    }
+    
     public void NamePlateSwitch(){
+        partContainer = TheBone.transform.Find("Part");
+        Debug.Log("Jlmn");
         foreach(Transform part in partContainer){
-            TrackedDeviceGraphicRaycaster trackingComponent = part.GetChild(0).GetComponent<TrackedDeviceGraphicRaycaster>();
+            TrackedDeviceGraphicRaycaster trackingComponent = part.Find("NamePlatePointer").GetComponent<TrackedDeviceGraphicRaycaster>();
+            
             if(!trackingComponent.isActiveAndEnabled){
                 trackingComponent.enabled = true;
             }else{

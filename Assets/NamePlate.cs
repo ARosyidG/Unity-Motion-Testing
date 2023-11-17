@@ -9,29 +9,37 @@ using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine.XR.Interaction.Toolkit.UI;
 using JetBrains.Annotations;
+using UnityEngine.Animations;
+
 
 public class NamePlate : MonoBehaviour
 {
     // Start is called before the first frame update
     private Boolean answer = false;
     private Boolean isAnswered = false;
+    GameObject Parent;
     void Awake()
     {
-
+        // Parent = transform.parent.gameObject;
+        // Debug.Log(transform.parent.position);
         // LeftRay.onHoverEntered += hilang;
     }
-
+    void Start(){
+        Debug.Log(transform.parent);
+    }
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log("yt");
+
         Vector3 cam = Camera.main.transform.position;
         if(!isAnswered){
             Transform nameBox = transform;
+            
             nameBox.forward = (nameBox.position - cam).normalized;
-            LineRenderer nameLine = nameBox.GetComponent<LineRenderer>();
+            LineRenderer nameLine = GetComponent<LineRenderer>();
             nameLine.SetPosition(1,nameBox.position);
-            nameLine.SetPosition(0,transform.position);
+            // Debug.Log(transform.parent);
+            nameLine.SetPosition(0,transform.parent.position);
             float distanceFromCameraToNameBox = Vector3.Distance(nameBox.position, cam);
             float nameBoxOpacity = Mathf.Clamp((6/(distanceFromCameraToNameBox/(6/distanceFromCameraToNameBox)))*255, 50, 255);
             // Debug.Log(nameBox.GetComponent<TextMeshPro>().color);
@@ -39,11 +47,13 @@ public class NamePlate : MonoBehaviour
             nameBox.GetChild(0).GetComponent<Image>().color = new Color(1,1,1,(nameBoxOpacity-150)/255f);
             nameBox.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0,0,0,nameBoxOpacity/255f);
         }else{
+            // Debug.Log("salah");
             Transform nameBox = transform;
             nameBox.forward = (nameBox.position - cam).normalized;
             LineRenderer nameLine = nameBox.GetComponent<LineRenderer>();
+            // Debug.Log(transform.parent);
             nameLine.SetPosition(1,nameBox.position);
-            nameLine.SetPosition(0,transform.position);
+            nameLine.SetPosition(0,transform.parent.position);
             float distanceFromCameraToNameBox = Vector3.Distance(nameBox.position, cam);
             float nameBoxOpacity = Mathf.Clamp((6/(distanceFromCameraToNameBox/(6/distanceFromCameraToNameBox)))*255, 50, 255);
             if(answer){
@@ -57,6 +67,7 @@ public class NamePlate : MonoBehaviour
         
     }
     public void setAnswer(){
+        isAnswered = true;
         if(transform.parent.name == transform.GetChild(0).GetChild(0).name){
             answer = true;
         }

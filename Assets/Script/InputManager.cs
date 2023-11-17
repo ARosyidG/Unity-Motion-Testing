@@ -85,7 +85,7 @@ public class InputManager : MonoBehaviour
             if(hitInfo.transform != null && hitInfo.transform.gameObject.layer == 3){
                 // Debug.Log(hitInfo.transform);
                 MotionControl.TranslateSetUp(hitInfo.transform.gameObject, Ray);
-            }else if(hitInfo.transform.gameObject.layer == 3){
+            }else{
                 MotionControl.TranslateSetUp(null, Ray);
             }
         }
