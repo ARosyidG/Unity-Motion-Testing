@@ -40,12 +40,16 @@ public class NamePlate : MonoBehaviour
             nameLine.SetPosition(1,nameBox.position);
             // Debug.Log(transform.parent);
             nameLine.SetPosition(0,transform.parent.position);
-            float distanceFromCameraToNameBox = Vector3.Distance(nameBox.position, cam);
-            float nameBoxOpacity = Mathf.Clamp((6/(distanceFromCameraToNameBox/(6/distanceFromCameraToNameBox)))*255, 50, 255);
+            float distanceFromBoneToNameBox = Vector3.Distance(nameBox.position, nameBox.parent.position);
+            float distanceFromBoneToCamera = Vector3.Distance(cam, nameBox.parent.position);
+            float distanceFromNameBoxToCamera = Vector3.Distance(cam, nameBox.position);
+            float nameBoxOpacity = Mathf.Clamp((distanceFromBoneToCamera-distanceFromNameBoxToCamera)/distanceFromBoneToNameBox, 0.3f, 0.8f);
             // Debug.Log(nameBox.GetComponent<TextMeshPro>().color);
             // Debug.Log(nameBox.GetChild(0).name);
-            nameBox.GetChild(0).GetComponent<Image>().color = new Color(1,1,1,(nameBoxOpacity-150)/255f);
-            nameBox.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0,0,0,nameBoxOpacity/255f);
+
+            // Debug.Log((distanceFromBoneToCamera-distanceFromNameBoxToCamera)/distanceFromBoneToNameBox);
+            nameBox.GetChild(0).GetComponent<Image>().color = new Color(1,1,1,nameBoxOpacity);
+            nameBox.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0,0,0,nameBoxOpacity);
         }else{
             // Debug.Log("salah");
             Transform nameBox = transform;
@@ -54,14 +58,16 @@ public class NamePlate : MonoBehaviour
             // Debug.Log(transform.parent);
             nameLine.SetPosition(1,nameBox.position);
             nameLine.SetPosition(0,transform.parent.position);
-            float distanceFromCameraToNameBox = Vector3.Distance(nameBox.position, cam);
-            float nameBoxOpacity = Mathf.Clamp((6/(distanceFromCameraToNameBox/(6/distanceFromCameraToNameBox)))*255, 50, 255);
+            float distanceFromBoneToNameBox = Vector3.Distance(nameBox.position, nameBox.parent.position);
+            float distanceFromBoneToCamera = Vector3.Distance(cam, nameBox.parent.position);
+            float distanceFromNameBoxToCamera = Vector3.Distance(cam, nameBox.position);
+            float nameBoxOpacity = Mathf.Clamp((distanceFromBoneToCamera-distanceFromNameBoxToCamera)/distanceFromBoneToNameBox, 0.3f, 0.8f);
             if(answer){
-                nameBox.GetChild(0).GetComponent<Image>().color = new Color(0,1,0,(nameBoxOpacity-150)/255f);
-                nameBox.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0,0,0,nameBoxOpacity/255f);
+                nameBox.GetChild(0).GetComponent<Image>().color = new Color(0,1,0,nameBoxOpacity);
+                nameBox.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0,0,0,nameBoxOpacity);
             }else{
-                nameBox.GetChild(0).GetComponent<Image>().color = new Color(1,0,0,(nameBoxOpacity-150)/255f);
-                nameBox.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0,0,0,nameBoxOpacity/255f);
+                nameBox.GetChild(0).GetComponent<Image>().color = new Color(1,0,0,nameBoxOpacity);
+                nameBox.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0,0,0,nameBoxOpacity);
             }
         }
         

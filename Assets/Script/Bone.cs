@@ -12,7 +12,7 @@ using Unity.XR.CoreUtils;
 public class Bone : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject TheBone;
+    public GameObject TheBone = null;
     
     Transform partContainer;
     [SerializeField]

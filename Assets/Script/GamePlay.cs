@@ -14,20 +14,20 @@ public class GamePlay : MonoBehaviour
     [SerializeField]
     Bone bone;
     [SerializeField]
-    GameObject SelectedBone;
+    public GameObject SelectedBone;
     [SerializeField]
     GameObject PapanUI;
     Button SubmitAnswerButton; 
     TextMeshProUGUI PapanNilai;
     [SerializeField]
-    GameObject partSelection;
+    public GameObject partSelection;
     Boolean isBoneSelected = false;
     // Start is called before the first frame update
     void Start()
     {
         SubmitAnswerButton = PapanUI.transform.Find("BSubmitAnswer").GetComponent<Button>();
         SubmitAnswerButton.onClick.AddListener(SubmitAnswer);
-        changeBone(partSelection);
+        // changeBone(partSelection);
         // changeBone(SelectedBone);
         
     }
@@ -60,9 +60,9 @@ public class GamePlay : MonoBehaviour
                 NamePlate namePlate = RNamePlate.gameObject.transform.parent.parent.GetComponent<NamePlate>();
                 namePlate.setAnswer();
                 if (namePlate.getAnswer()){
-                    changeBone(partSelection.transform.Find("Part").Find(RNamePlate.gameObject.name).gameObject);
+                    changeBone(bone.TheBone.transform.Find("Part").Find(RNamePlate.gameObject.name).gameObject);
+                    isBoneSelected = true;
                 }
-                isBoneSelected = true;
             }
         }
     }
@@ -87,18 +87,21 @@ public class GamePlay : MonoBehaviour
         return score;
     }
     public void changeBone(GameObject SelectedBone){
+        Vector3 BonePosition = new Vector3(0,0,0);
+        BonePosition = SelectedBone.transform.position;
+        // if(bone.TheBone.name == "PartSelection"){
+            // BonePosition = SelectedBone.transform.position;
+        // }else{
+        //     // bone.TheBone.transform.localScale = bone.TheBone.transform.localScale*24;
+        //     BonePosition = SelectedBone.transform.Find("Part").Find(SelectedBone.name).position;
+        // }
         if (bone.TheBone != null){
             Destroy(bone.TheBone);
         }
+        
         bone.TheBone = Instantiate(SelectedBone, bone.transform);
         bone.TheBone.name = SelectedBone.name;
-        Vector3 BonePosition = new Vector3(0,0,0);
-        if(bone.TheBone.name == "PartSelection"){
-            BonePosition = partSelection.transform.position;
-        }else{
-            // bone.TheBone.transform.localScale = bone.TheBone.transform.localScale*24;
-            BonePosition = partSelection.transform.Find("Part").Find(SelectedBone.name).position;
-        }
+        
         bone.TheBone.transform.position = BonePosition;
         bone.TheBone.SetActive(true);
         

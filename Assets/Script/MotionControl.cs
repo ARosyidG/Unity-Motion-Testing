@@ -93,7 +93,7 @@ public class MotionControl : MonoBehaviour
             Vector3 cameraRelativeX = directionOfTravel.y * cameraX;
             Vector3 cameraRelativeY = directionOfTravel.x * -1 * cameraY;
             Vector3 controllerMotionInput = (cameraRelativeX + cameraRelativeY ); 
-            ControlledObject.transform.Rotate(controllerMotionInput * 30 * Time.deltaTime,Space.World);
+            ControlledObject.transform.Rotate(controllerMotionInput * 50 * Time.deltaTime,Space.World);
         }else{
             Debug.Log("null");
         }
