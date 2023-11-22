@@ -22,16 +22,48 @@ public class GamePlay : MonoBehaviour
     [SerializeField]
     public GameObject partSelection;
     Boolean isBoneSelected = false;
+    string mode;
+    Button B_Mode;
+    [SerializeField]
+    GameObject TVUI;
     // Start is called before the first frame update
     void Start()
     {
         SubmitAnswerButton = PapanUI.transform.Find("BSubmitAnswer").GetComponent<Button>();
         SubmitAnswerButton.onClick.AddListener(SubmitAnswer);
         // changeBone(partSelection);
-        // changeBone(SelectedBone);
+        changeBone(SelectedBone);
+        mode = "Quiz";
+        B_Mode = PapanUI.transform.Find("BMode").GetComponent<Button>();
+        B_Mode.onClick.AddListener(ChangeMode);
+        
         
     }
-
+    void ChangeMode(){
+        
+        if(this.mode == "Observe"){
+            Transform PartContainer = bone.TheBone.transform.Find("Part");
+            Debug.Log("Quiz Mode");
+            foreach(Transform Part in PartContainer){
+                Button B_Observe =Part.Find("NamePlatePointer").Find("BObserve").GetComponent<Button>(); 
+                B_Observe.gameObject.SetActive(false);
+                Part.Find("NamePlatePointer").Find("NamePlate").GetChild(0).GetComponent<TextMeshProUGUI>().SetText("");
+            }
+            this.mode = "Quiz";
+            B_Mode.transform.Find("Text").GetComponent<TextMeshProUGUI>().SetText("Observe Mode");
+        }else{
+            Transform PartContainer = bone.TheBone.transform.Find("Part");
+            Debug.Log("Observe Mode");
+            foreach(Transform Part in PartContainer){
+                Button B_Observe =Part.Find("NamePlatePointer").Find("BObserve").GetComponent<Button>(); 
+                B_Observe.gameObject.SetActive(true);
+                Part.Find("NamePlatePointer").Find("NamePlate").GetChild(0).GetComponent<TextMeshProUGUI>().SetText(Part.name);
+            }
+            this.mode = "Observe";
+            B_Mode.transform.Find("Text").GetComponent<TextMeshProUGUI>().SetText("Quiz Mode");
+        }
+    }
+    
     // Update is called once per frame
     void SubmitAnswer(){
         float score = getScore();
@@ -40,7 +72,9 @@ public class GamePlay : MonoBehaviour
     }
     void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.S)){
+            B_Mode.onClick?.Invoke();
+        }
     }
 
     public void SetNameOfPlateNameOnBone(XRRayInteractor Ray){

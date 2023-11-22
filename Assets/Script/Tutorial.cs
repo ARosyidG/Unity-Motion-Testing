@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using TMPro;
 using UnityEditor.XR;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +20,8 @@ public class Tutorial : MonoBehaviour
     bool isSkiped = false;
     Button B_Next;
     Button B_Prev;
+    [SerializeField]
+    GameObject TVUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,12 +37,12 @@ public class Tutorial : MonoBehaviour
         B_Prev = transform.Find("Tutorial").Find("NextPrev").Find("Prev.").GetComponent<Button>();
         B_Next.onClick.AddListener(next);
         B_Prev.onClick.AddListener(prev);
-        B_Next.onClick?.Invoke();
-        B_Next.onClick?.Invoke();
-        B_Next.onClick?.Invoke();
-        B_Next.onClick?.Invoke();
-        B_Next.onClick?.Invoke();
-        B_Next.onClick?.Invoke();
+        // B_Next.onClick?.Invoke();
+        // B_Next.onClick?.Invoke();
+        // B_Next.onClick?.Invoke();
+        // B_Next.onClick?.Invoke();
+        // B_Next.onClick?.Invoke();
+        // B_Next.onClick?.Invoke();
         activate();
     }
 
@@ -105,6 +109,7 @@ public class Tutorial : MonoBehaviour
             transform.Find("LabelingTutorial").Find("TutorialCube").position = TutorialCubePosition;
         }else if (step == 6){
             gamePlay.changeBone(gamePlay.partSelection);
+            TVUI.SetActive(true);
             gameObject.SetActive(false);
         }
         activate();
@@ -127,7 +132,8 @@ public class Tutorial : MonoBehaviour
     }
     void TutorialConfirmationYes(){
         gamePlay.changeBone(gamePlay.partSelection);
-        T_TutorialConfirmation.gameObject.SetActive(false);
+        TVUI.SetActive(true);
+        gameObject.SetActive(false);
         step = 6;
     }
     void TutorialConfirmationNo(){
@@ -161,7 +167,7 @@ public class Tutorial : MonoBehaviour
         }
     }
     void ZoomTutorial(){
-        Debug.Log(Vector3.Distance(bone.TheBone.transform.position,bone.gameObject.transform.position));
+        // Debug.Log(Vector3.Distance(bone.TheBone.transform.position,bone.gameObject.transform.position));
         if (Vector3.Distance(bone.TheBone.transform.position,bone.gameObject.transform.position) <= 6.0f){
             transform.Find("ZoomTutorial").Find("Desc").Find("Tutorial").gameObject.SetActive(false);
             transform.Find("ZoomTutorial").Find("Desc").Find("Succes").gameObject.SetActive(true);
@@ -171,10 +177,23 @@ public class Tutorial : MonoBehaviour
         }
     }
     void ScaleTutorial(){
-
+        if (bone.TheBone.transform.localScale.x >= 3.0f){
+            transform.Find("ScaleTutorial").Find("Desc").Find("Tutorial").gameObject.SetActive(false);
+            transform.Find("ScaleTutorial").Find("Desc").Find("Succes").gameObject.SetActive(true);
+        }else{
+            transform.Find("ScaleTutorial").Find("Desc").Find("Tutorial").gameObject.SetActive(true);
+            transform.Find("ScaleTutorial").Find("Desc").Find("Succes").gameObject.SetActive(false);
+        }
     }
     void LabelingTutorial(){
-        
+        String Text = bone.TheBone.transform.Find("Part").Find("BOX").Find("NamePlatePointer").Find("NamePlate").GetChild(0).GetComponent<TextMeshProUGUI>().text;
+        if (Text == "BOX"){
+            transform.Find("LabelingTutorial").Find("Desc").Find("Tutorial").gameObject.SetActive(false);
+            transform.Find("LabelingTutorial").Find("Desc").Find("Succes").gameObject.SetActive(true);
+        }else{
+            transform.Find("LabelingTutorial").Find("Desc").Find("Tutorial").gameObject.SetActive(true);
+            transform.Find("LabelingTutorial").Find("Desc").Find("Succes").gameObject.SetActive(false);
+        }
     }
 
 }
