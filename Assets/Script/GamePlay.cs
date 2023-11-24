@@ -32,7 +32,7 @@ public class GamePlay : MonoBehaviour
         SubmitAnswerButton = PapanUI.transform.Find("BSubmitAnswer").GetComponent<Button>();
         SubmitAnswerButton.onClick.AddListener(SubmitAnswer);
         // changeBone(partSelection);
-        changeBone(SelectedBone);
+        // changeBone(SelectedBone);
         mode = "Quiz";
         B_Mode = PapanUI.transform.Find("BMode").GetComponent<Button>();
         B_Mode.onClick.AddListener(ChangeMode);
@@ -89,7 +89,7 @@ public class GamePlay : MonoBehaviour
         }
         GrabableNamePlate.transform.position = new Vector3(-1,-5,-1);
         bone.NamePlateSwitch();
-        if (!isBoneSelected){
+        if (bone.TheBone.name == "PartSelection"){
             if(RNamePlate.gameObject != null){
                 NamePlate namePlate = RNamePlate.gameObject.transform.parent.parent.GetComponent<NamePlate>();
                 namePlate.setAnswer();

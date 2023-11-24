@@ -3,16 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Library : MonoBehaviour
 {
     // Start is called before the first frame update
     public IDictionary<String, string> Library_Bone = new Dictionary<String, string>();
+    [SerializeField]
+    GameObject Tutorial;
+    Button B_Tutorial;
     void Start()
     {
+        B_Tutorial = transform.Find("WantTutorial").GetComponent<Button>();
+        B_Tutorial.onClick.AddListener(gotToTutorial);
+        // B_Tutorial.onClick?.Invoke();
         Library_Bone.Add(
             "OS COXAE",
-            "The mature hip bone (L. os coxae) is the large, flat pelvic bone formed by the fusion of three primary bones—ilium, ischium, and pubis—at the end of the teenage years"
+            "The mature hip bone (L. os coxae) is the large, flat pelvic bone formed by the fusion of three primary bonesï¿½ilium, ischium, and pubisï¿½at the end of the teenage years"
         );
         Library_Bone.Add(
             "Acetabulum",
@@ -146,6 +153,13 @@ public class Library : MonoBehaviour
     void Update()
     {
 
+    }
+    void gotToTutorial(){
+        this.Tutorial.SetActive(true);
+        this.Tutorial.GetComponent<Tutorial>().step = 0;
+        this.Tutorial.GetComponent<Tutorial>().next();
+
+        gameObject.SetActive(false);
     }
     public void Observe(string key)
     {

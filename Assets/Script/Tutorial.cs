@@ -12,7 +12,7 @@ public class Tutorial : MonoBehaviour
     Transform T_TutorialConfirmation;
     Button T_TutorialConfirmation_Yes;
     Button T_TutorialConfirmation_No;
-    int step = 0;
+    public int step;
     [SerializeField]
     GamePlay gamePlay;
     [SerializeField]
@@ -25,6 +25,7 @@ public class Tutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        step = 0;
         T_TutorialConfirmation = transform.Find("TutorialConfirmation");
         T_TutorialConfirmation_Yes = T_TutorialConfirmation.Find("Canvas").Find("Yes").GetComponent<Button>();
         T_TutorialConfirmation_No = T_TutorialConfirmation.Find("Canvas").Find("No").GetComponent<Button>();
@@ -70,7 +71,7 @@ public class Tutorial : MonoBehaviour
         // Debug.Log(step);
         
     }
-    void next(){
+    public void next(){
         step = Mathf.Clamp(step+1, 0,6);
         // activate();
         TutorialSetUp();

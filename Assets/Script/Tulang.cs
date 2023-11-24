@@ -19,11 +19,12 @@ public class Tulang : MonoBehaviour
     XRRayInteractor ray;
     Vector3 reticlePosition;
     Vector3 reticleNormal;
-    bool translateInputToggle = true;
+    bool translateInputToggle;
     Vector3 directionOfTravel;
     // List<RaycastResult> results = new List<RaycastResult>();
     void Start()
     {
+        translateInputToggle = true;
         partContainer= transform.Find("Part");        
         // NameContainer = transform.Find("NameBox");
         // Debug.Log(partContainer.transform.childCount);

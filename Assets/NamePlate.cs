@@ -43,13 +43,13 @@ public class NamePlate : MonoBehaviour
             float distanceFromBoneToNameBox = Vector3.Distance(nameBox.position, nameBox.parent.position);
             float distanceFromBoneToCamera = Vector3.Distance(cam, nameBox.parent.position);
             float distanceFromNameBoxToCamera = Vector3.Distance(cam, nameBox.position);
-            float nameBoxOpacity = Mathf.Clamp((distanceFromBoneToCamera-distanceFromNameBoxToCamera)/distanceFromBoneToNameBox, 0.3f, 0.8f);
+            float nameBoxOpacity = Mathf.Clamp((distanceFromBoneToCamera-distanceFromNameBoxToCamera)/distanceFromBoneToNameBox, 0.5f, 0.8f);
             // Debug.Log(nameBox.GetComponent<TextMeshPro>().color);
             // Debug.Log(nameBox.GetChild(0).name);
 
             // Debug.Log((distanceFromBoneToCamera-distanceFromNameBoxToCamera)/distanceFromBoneToNameBox);
             nameBox.Find("NamePlate").GetComponent<Image>().color = new Color(1,1,1,nameBoxOpacity);
-            nameBox.Find("NamePlate").GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0,0,0,nameBoxOpacity);
+            // nameBox.Find("NamePlate").GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0,0,0,nameBoxOpacity);
         }else{
             // Debug.Log("salah");
             Transform nameBox = transform;
@@ -61,20 +61,20 @@ public class NamePlate : MonoBehaviour
             float distanceFromBoneToNameBox = Vector3.Distance(nameBox.position, nameBox.parent.position);
             float distanceFromBoneToCamera = Vector3.Distance(cam, nameBox.parent.position);
             float distanceFromNameBoxToCamera = Vector3.Distance(cam, nameBox.position);
-            float nameBoxOpacity = Mathf.Clamp((distanceFromBoneToCamera-distanceFromNameBoxToCamera)/distanceFromBoneToNameBox, 0.3f, 0.8f);
+            float nameBoxOpacity = Mathf.Clamp((distanceFromBoneToCamera-distanceFromNameBoxToCamera)/distanceFromBoneToNameBox, 0.5f, 0.8f);
             if(answer){
                 nameBox.Find("NamePlate").GetComponent<Image>().color = new Color(0,1,0,nameBoxOpacity);
                 nameBox.Find("NamePlate").GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0,0,0,nameBoxOpacity);
             }else{
                 nameBox.Find("NamePlate").GetComponent<Image>().color = new Color(1,0,0,nameBoxOpacity);
-                nameBox.Find("NamePlate").GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0,0,0,nameBoxOpacity);
+                // nameBox.Find("NamePlate").GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0,0,0,nameBoxOpacity);
             }
         }
         
     }
     public void setAnswer(){
         isAnswered = true;
-        if(transform.parent.name == transform.GetChild(0).GetChild(0).name){
+        if(transform.parent.name == transform.Find("NamePlate").GetChild(0).name){
             answer = true;
         }
     }
