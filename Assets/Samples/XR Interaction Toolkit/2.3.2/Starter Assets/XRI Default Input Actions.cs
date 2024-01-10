@@ -2129,21 +2129,12 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         },
         {
             ""name"": ""Controller"",
-            ""id"": ""0388e47a-ac96-46ba-95e8-6b6ecf3455bd"",
+            ""id"": ""58489a3b-2d62-4fc1-a45f-4ca937c5fffa"",
             ""actions"": [
                 {
-                    ""name"": ""LeftControllerRotate"",
+                    ""name"": ""Scale"",
                     ""type"": ""Button"",
-                    ""id"": ""f7522340-8b38-4717-b67b-2c8e80d58466"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""RightControllerRotate"",
-                    ""type"": ""Button"",
-                    ""id"": ""e5368a19-77de-49ed-acf7-7ed8cae0dcff"",
+                    ""id"": ""81722ef1-485a-4fae-b698-66377a8b8b7b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -2152,7 +2143,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 {
                     ""name"": ""LeftControllerGrab"",
                     ""type"": ""Button"",
-                    ""id"": ""94abac22-d4f8-4260-acd5-f27297300423"",
+                    ""id"": ""855a5a74-4cdc-4c2b-b58b-3c2a00dfb2a4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -2161,43 +2152,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 {
                     ""name"": ""RightControllerGrab"",
                     ""type"": ""Button"",
-                    ""id"": ""a0d29dc2-b41f-4c92-98c1-884dbbd4813d"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Scale"",
-                    ""type"": ""Button"",
-                    ""id"": ""0e0e9a0a-f6e1-4804-8283-df7a8db505f5"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""RotateZAxis"",
-                    ""type"": ""Button"",
-                    ""id"": ""91a969dd-10a2-42f9-8d3b-ac2ce0cd84e3"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""TriggerPress"",
-                    ""type"": ""Button"",
-                    ""id"": ""f41df631-e0e6-40ae-ae66-0d49bf3960ab"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""GripPress"",
-                    ""type"": ""Button"",
-                    ""id"": ""59acca96-75d3-44e1-86f0-d004b0f02b90"",
+                    ""id"": ""22611088-87ad-4b51-8baf-fc9e00ec721a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -2206,50 +2161,44 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 {
                     ""name"": ""ZOOM"",
                     ""type"": ""Value"",
-                    ""id"": ""d3dee8c9-8bd2-4cb8-a6cc-d5083a733b57"",
+                    ""id"": ""e45ac327-5e0a-40cd-bdf7-7f52908490cb"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""RotateZAxis"",
+                    ""type"": ""Button"",
+                    ""id"": ""729923d4-a0cf-4ad4-b0c0-a6a9c0b1ae23"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftControllerRotate"",
+                    ""type"": ""Button"",
+                    ""id"": ""1600ca5f-af7a-4702-87ce-6dd834c736f3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightControllerRotate"",
+                    ""type"": ""Button"",
+                    ""id"": ""35212c91-6353-41b0-b6a5-86adcfe4be02"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""f237a29f-b252-417c-ad3f-f6c7a8010195"",
-                    ""path"": ""<OculusTouchController>{LeftHand}/triggerPressed"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Continuous Move"",
-                    ""action"": ""LeftControllerRotate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""53eaa435-2065-4862-a70b-733cbdcd74e0"",
-                    ""path"": ""<OculusTouchController>{LeftHand}/gripPressed"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""LeftControllerGrab"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""46107b32-3d3e-48d7-8c73-4fc651708e2d"",
-                    ""path"": ""<Keyboard>/period"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""LeftControllerGrab"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": ""One Modifier"",
-                    ""id"": ""e1442113-349a-462a-8fd7-e3eb457af467"",
+                    ""id"": ""0baf8050-7113-402c-a309-a5c5337c747c"",
                     ""path"": ""OneModifier"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -2260,7 +2209,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": ""modifier"",
-                    ""id"": ""8e3ee2ac-6333-4db8-9ad8-187c039b9117"",
+                    ""id"": ""65dd53cf-dabd-40af-b4da-62b2ad00fd8c"",
                     ""path"": ""<OculusTouchController>{LeftHand}/gripPressed"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -2271,7 +2220,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": ""binding"",
-                    ""id"": ""4c312eea-40c8-4a62-9a20-7cdbd39046fe"",
+                    ""id"": ""344722ee-3fdc-474e-9c26-ce69726a123c"",
                     ""path"": ""<OculusTouchController>{RightHand}/gripPressed"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -2282,51 +2231,18 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ab6e7d77-241a-43fc-96b0-2f7f88deb3fc"",
-                    ""path"": ""<Keyboard>/slash"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Continuous Move"",
-                    ""action"": ""LeftControllerRotate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""21725467-8717-478d-ac7b-1bba20e9a646"",
-                    ""path"": ""<OculusTouchController>{LeftHand}/triggerPressed"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TriggerPress"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""528337aa-a43b-448b-8991-f14b607d9918"",
+                    ""id"": ""75072315-e62c-43c5-b6de-825074cc6821"",
                     ""path"": ""<OculusTouchController>{LeftHand}/gripPressed"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""GripPress"",
+                    ""action"": ""LeftControllerGrab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1c261f40-5e62-40dd-a7d3-91f7a68a17c8"",
-                    ""path"": ""<OculusTouchController>{RightHand}/triggerPressed"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RightControllerRotate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3ec7f787-7534-44f6-901b-504e31ffd153"",
+                    ""id"": ""5a27a695-c266-44ff-b8fb-9ca37e44d929"",
                     ""path"": ""<OculusTouchController>{RightHand}/gripPressed"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -2336,41 +2252,8 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""One Modifier"",
-                    ""id"": ""8a7c62bb-a610-4e5a-9ee8-baabd3509c6b"",
-                    ""path"": ""OneModifier"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateZAxis"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier"",
-                    ""id"": ""2117c8e8-2c43-4ad8-b9c8-86dd24594387"",
-                    ""path"": ""<OculusTouchController>{LeftHand}/gripPressed"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateZAxis"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""d11dddfc-5d27-4a97-bda9-7e9032ce5172"",
-                    ""path"": ""<OculusTouchController>{RightHand}/gripPressed"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateZAxis"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
-                    ""id"": ""84a1a12f-4032-4604-b64e-83f4abb7c89d"",
+                    ""id"": ""2fdcf46a-2c67-47c2-ad50-2f5081b8ee69"",
                     ""path"": ""<OculusTouchController>{LeftHand}/thumbstick"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -2381,7 +2264,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": """",
-                    ""id"": ""12bbb60f-026a-47c8-92e4-ad78b873dcd9"",
+                    ""id"": ""2a2efe76-e375-4f40-aa89-71cff54c4858"",
                     ""path"": ""<OculusTouchController>{RightHand}/thumbstick"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -2389,32 +2272,37 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""action"": ""ZOOM"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""RightController"",
-            ""id"": ""bda6eed0-be99-4faf-bf15-f6c1da6403dc"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""e91cbd49-8559-4a12-b58d-c085c6b8c81e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
+                },
                 {
                     ""name"": """",
-                    ""id"": ""979b7897-4a46-4b9f-90fb-23746a7b96c1"",
+                    ""id"": ""f4dbceef-56b4-4ea8-b61f-708683333b09"",
                     ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""RotateZAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0b390c7e-dc03-4922-b78d-53c751abe9b5"",
+                    ""path"": ""<OculusTouchController>{LeftHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftControllerRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""68790339-3185-492f-a3e9-9a4f691c6d79"",
+                    ""path"": ""<OculusTouchController>{RightHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightControllerRotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -2422,12 +2310,12 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         },
         {
             ""name"": ""Mencocokkan"",
-            ""id"": ""3ddbdbbe-f31d-4797-b46d-fc4e786aec4f"",
+            ""id"": ""f47593ac-9cee-497e-90b6-b1dc1a253802"",
             ""actions"": [
                 {
-                    ""name"": ""LeftControllerGrab"",
+                    ""name"": ""LeftControllerRotate"",
                     ""type"": ""Button"",
-                    ""id"": ""08450e22-6bf3-4c84-86d7-db8bfcd052f9"",
+                    ""id"": ""f4b4bd56-a61c-47e6-a8bc-0379c243a91d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -2436,7 +2324,25 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 {
                     ""name"": ""RightControllerGrab"",
                     ""type"": ""Button"",
-                    ""id"": ""e2f69768-766c-4b0c-8e7b-913077c4aff6"",
+                    ""id"": ""670651d0-ce39-4011-a09e-2c7323485f01"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftControllerGrab"",
+                    ""type"": ""Button"",
+                    ""id"": ""07ff0ef1-7578-4b17-9a46-269f912737c4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightControllerRotate"",
+                    ""type"": ""Button"",
+                    ""id"": ""30652e2e-8e31-4dd2-9668-3145ac140bae"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -2446,7 +2352,29 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""c828c65b-762c-4bac-95f2-19aeb191313e"",
+                    ""id"": ""b9fe8b81-90c6-4952-b34b-91524b8ab145"",
+                    ""path"": ""<OculusTouchController>{LeftHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftControllerRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6bd702a2-d4a4-4708-9f56-2eeeab7d8cf9"",
+                    ""path"": ""<OculusTouchController>{RightHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightControllerRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d5a47af6-5bbb-4af6-879f-3338c63c9219"",
                     ""path"": ""<OculusTouchController>{LeftHand}/gripPressed"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -2457,18 +2385,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": """",
-                    ""id"": ""dd8dceae-7ecb-49ac-ad16-cfd73a7b44e9"",
-                    ""path"": ""<Keyboard>/p"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""LeftControllerGrab"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""37b802ec-8057-4cef-bf73-07e90c12103b"",
+                    ""id"": ""36a3fa36-2ae2-44bd-b581-41cd6544192f"",
                     ""path"": ""<OculusTouchController>{RightHand}/gripPressed"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -2538,11 +2455,6 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""isOR"": false
                 }
             ]
-        },
-        {
-            ""name"": ""New control scheme"",
-            ""bindingGroup"": ""New control scheme"",
-            ""devices"": []
         }
     ]
 }");
@@ -2633,22 +2545,19 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         m_XRIUI_RightClick = m_XRIUI.FindAction("RightClick", throwIfNotFound: true);
         // Controller
         m_Controller = asset.FindActionMap("Controller", throwIfNotFound: true);
-        m_Controller_LeftControllerRotate = m_Controller.FindAction("LeftControllerRotate", throwIfNotFound: true);
-        m_Controller_RightControllerRotate = m_Controller.FindAction("RightControllerRotate", throwIfNotFound: true);
+        m_Controller_Scale = m_Controller.FindAction("Scale", throwIfNotFound: true);
         m_Controller_LeftControllerGrab = m_Controller.FindAction("LeftControllerGrab", throwIfNotFound: true);
         m_Controller_RightControllerGrab = m_Controller.FindAction("RightControllerGrab", throwIfNotFound: true);
-        m_Controller_Scale = m_Controller.FindAction("Scale", throwIfNotFound: true);
-        m_Controller_RotateZAxis = m_Controller.FindAction("RotateZAxis", throwIfNotFound: true);
-        m_Controller_TriggerPress = m_Controller.FindAction("TriggerPress", throwIfNotFound: true);
-        m_Controller_GripPress = m_Controller.FindAction("GripPress", throwIfNotFound: true);
         m_Controller_ZOOM = m_Controller.FindAction("ZOOM", throwIfNotFound: true);
-        // RightController
-        m_RightController = asset.FindActionMap("RightController", throwIfNotFound: true);
-        m_RightController_Newaction = m_RightController.FindAction("New action", throwIfNotFound: true);
+        m_Controller_RotateZAxis = m_Controller.FindAction("RotateZAxis", throwIfNotFound: true);
+        m_Controller_LeftControllerRotate = m_Controller.FindAction("LeftControllerRotate", throwIfNotFound: true);
+        m_Controller_RightControllerRotate = m_Controller.FindAction("RightControllerRotate", throwIfNotFound: true);
         // Mencocokkan
         m_Mencocokkan = asset.FindActionMap("Mencocokkan", throwIfNotFound: true);
-        m_Mencocokkan_LeftControllerGrab = m_Mencocokkan.FindAction("LeftControllerGrab", throwIfNotFound: true);
+        m_Mencocokkan_LeftControllerRotate = m_Mencocokkan.FindAction("LeftControllerRotate", throwIfNotFound: true);
         m_Mencocokkan_RightControllerGrab = m_Mencocokkan.FindAction("RightControllerGrab", throwIfNotFound: true);
+        m_Mencocokkan_LeftControllerGrab = m_Mencocokkan.FindAction("LeftControllerGrab", throwIfNotFound: true);
+        m_Mencocokkan_RightControllerRotate = m_Mencocokkan.FindAction("RightControllerRotate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -3460,28 +3369,24 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     // Controller
     private readonly InputActionMap m_Controller;
     private IControllerActions m_ControllerActionsCallbackInterface;
-    private readonly InputAction m_Controller_LeftControllerRotate;
-    private readonly InputAction m_Controller_RightControllerRotate;
+    private readonly InputAction m_Controller_Scale;
     private readonly InputAction m_Controller_LeftControllerGrab;
     private readonly InputAction m_Controller_RightControllerGrab;
-    private readonly InputAction m_Controller_Scale;
-    private readonly InputAction m_Controller_RotateZAxis;
-    private readonly InputAction m_Controller_TriggerPress;
-    private readonly InputAction m_Controller_GripPress;
     private readonly InputAction m_Controller_ZOOM;
+    private readonly InputAction m_Controller_RotateZAxis;
+    private readonly InputAction m_Controller_LeftControllerRotate;
+    private readonly InputAction m_Controller_RightControllerRotate;
     public struct ControllerActions
     {
         private @XRIDefaultInputActions m_Wrapper;
         public ControllerActions(@XRIDefaultInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @LeftControllerRotate => m_Wrapper.m_Controller_LeftControllerRotate;
-        public InputAction @RightControllerRotate => m_Wrapper.m_Controller_RightControllerRotate;
+        public InputAction @Scale => m_Wrapper.m_Controller_Scale;
         public InputAction @LeftControllerGrab => m_Wrapper.m_Controller_LeftControllerGrab;
         public InputAction @RightControllerGrab => m_Wrapper.m_Controller_RightControllerGrab;
-        public InputAction @Scale => m_Wrapper.m_Controller_Scale;
-        public InputAction @RotateZAxis => m_Wrapper.m_Controller_RotateZAxis;
-        public InputAction @TriggerPress => m_Wrapper.m_Controller_TriggerPress;
-        public InputAction @GripPress => m_Wrapper.m_Controller_GripPress;
         public InputAction @ZOOM => m_Wrapper.m_Controller_ZOOM;
+        public InputAction @RotateZAxis => m_Wrapper.m_Controller_RotateZAxis;
+        public InputAction @LeftControllerRotate => m_Wrapper.m_Controller_LeftControllerRotate;
+        public InputAction @RightControllerRotate => m_Wrapper.m_Controller_RightControllerRotate;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -3491,113 +3396,72 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         {
             if (m_Wrapper.m_ControllerActionsCallbackInterface != null)
             {
-                @LeftControllerRotate.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnLeftControllerRotate;
-                @LeftControllerRotate.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnLeftControllerRotate;
-                @LeftControllerRotate.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnLeftControllerRotate;
-                @RightControllerRotate.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRightControllerRotate;
-                @RightControllerRotate.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRightControllerRotate;
-                @RightControllerRotate.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRightControllerRotate;
+                @Scale.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnScale;
+                @Scale.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnScale;
+                @Scale.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnScale;
                 @LeftControllerGrab.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnLeftControllerGrab;
                 @LeftControllerGrab.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnLeftControllerGrab;
                 @LeftControllerGrab.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnLeftControllerGrab;
                 @RightControllerGrab.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRightControllerGrab;
                 @RightControllerGrab.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRightControllerGrab;
                 @RightControllerGrab.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRightControllerGrab;
-                @Scale.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnScale;
-                @Scale.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnScale;
-                @Scale.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnScale;
-                @RotateZAxis.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRotateZAxis;
-                @RotateZAxis.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRotateZAxis;
-                @RotateZAxis.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRotateZAxis;
-                @TriggerPress.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnTriggerPress;
-                @TriggerPress.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnTriggerPress;
-                @TriggerPress.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnTriggerPress;
-                @GripPress.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnGripPress;
-                @GripPress.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnGripPress;
-                @GripPress.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnGripPress;
                 @ZOOM.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnZOOM;
                 @ZOOM.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnZOOM;
                 @ZOOM.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnZOOM;
+                @RotateZAxis.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRotateZAxis;
+                @RotateZAxis.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRotateZAxis;
+                @RotateZAxis.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRotateZAxis;
+                @LeftControllerRotate.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnLeftControllerRotate;
+                @LeftControllerRotate.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnLeftControllerRotate;
+                @LeftControllerRotate.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnLeftControllerRotate;
+                @RightControllerRotate.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRightControllerRotate;
+                @RightControllerRotate.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRightControllerRotate;
+                @RightControllerRotate.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRightControllerRotate;
             }
             m_Wrapper.m_ControllerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @LeftControllerRotate.started += instance.OnLeftControllerRotate;
-                @LeftControllerRotate.performed += instance.OnLeftControllerRotate;
-                @LeftControllerRotate.canceled += instance.OnLeftControllerRotate;
-                @RightControllerRotate.started += instance.OnRightControllerRotate;
-                @RightControllerRotate.performed += instance.OnRightControllerRotate;
-                @RightControllerRotate.canceled += instance.OnRightControllerRotate;
+                @Scale.started += instance.OnScale;
+                @Scale.performed += instance.OnScale;
+                @Scale.canceled += instance.OnScale;
                 @LeftControllerGrab.started += instance.OnLeftControllerGrab;
                 @LeftControllerGrab.performed += instance.OnLeftControllerGrab;
                 @LeftControllerGrab.canceled += instance.OnLeftControllerGrab;
                 @RightControllerGrab.started += instance.OnRightControllerGrab;
                 @RightControllerGrab.performed += instance.OnRightControllerGrab;
                 @RightControllerGrab.canceled += instance.OnRightControllerGrab;
-                @Scale.started += instance.OnScale;
-                @Scale.performed += instance.OnScale;
-                @Scale.canceled += instance.OnScale;
-                @RotateZAxis.started += instance.OnRotateZAxis;
-                @RotateZAxis.performed += instance.OnRotateZAxis;
-                @RotateZAxis.canceled += instance.OnRotateZAxis;
-                @TriggerPress.started += instance.OnTriggerPress;
-                @TriggerPress.performed += instance.OnTriggerPress;
-                @TriggerPress.canceled += instance.OnTriggerPress;
-                @GripPress.started += instance.OnGripPress;
-                @GripPress.performed += instance.OnGripPress;
-                @GripPress.canceled += instance.OnGripPress;
                 @ZOOM.started += instance.OnZOOM;
                 @ZOOM.performed += instance.OnZOOM;
                 @ZOOM.canceled += instance.OnZOOM;
+                @RotateZAxis.started += instance.OnRotateZAxis;
+                @RotateZAxis.performed += instance.OnRotateZAxis;
+                @RotateZAxis.canceled += instance.OnRotateZAxis;
+                @LeftControllerRotate.started += instance.OnLeftControllerRotate;
+                @LeftControllerRotate.performed += instance.OnLeftControllerRotate;
+                @LeftControllerRotate.canceled += instance.OnLeftControllerRotate;
+                @RightControllerRotate.started += instance.OnRightControllerRotate;
+                @RightControllerRotate.performed += instance.OnRightControllerRotate;
+                @RightControllerRotate.canceled += instance.OnRightControllerRotate;
             }
         }
     }
     public ControllerActions @Controller => new ControllerActions(this);
 
-    // RightController
-    private readonly InputActionMap m_RightController;
-    private IRightControllerActions m_RightControllerActionsCallbackInterface;
-    private readonly InputAction m_RightController_Newaction;
-    public struct RightControllerActions
-    {
-        private @XRIDefaultInputActions m_Wrapper;
-        public RightControllerActions(@XRIDefaultInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_RightController_Newaction;
-        public InputActionMap Get() { return m_Wrapper.m_RightController; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(RightControllerActions set) { return set.Get(); }
-        public void SetCallbacks(IRightControllerActions instance)
-        {
-            if (m_Wrapper.m_RightControllerActionsCallbackInterface != null)
-            {
-                @Newaction.started -= m_Wrapper.m_RightControllerActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_RightControllerActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_RightControllerActionsCallbackInterface.OnNewaction;
-            }
-            m_Wrapper.m_RightControllerActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
-            }
-        }
-    }
-    public RightControllerActions @RightController => new RightControllerActions(this);
-
     // Mencocokkan
     private readonly InputActionMap m_Mencocokkan;
     private IMencocokkanActions m_MencocokkanActionsCallbackInterface;
-    private readonly InputAction m_Mencocokkan_LeftControllerGrab;
+    private readonly InputAction m_Mencocokkan_LeftControllerRotate;
     private readonly InputAction m_Mencocokkan_RightControllerGrab;
+    private readonly InputAction m_Mencocokkan_LeftControllerGrab;
+    private readonly InputAction m_Mencocokkan_RightControllerRotate;
     public struct MencocokkanActions
     {
         private @XRIDefaultInputActions m_Wrapper;
         public MencocokkanActions(@XRIDefaultInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @LeftControllerGrab => m_Wrapper.m_Mencocokkan_LeftControllerGrab;
+        public InputAction @LeftControllerRotate => m_Wrapper.m_Mencocokkan_LeftControllerRotate;
         public InputAction @RightControllerGrab => m_Wrapper.m_Mencocokkan_RightControllerGrab;
+        public InputAction @LeftControllerGrab => m_Wrapper.m_Mencocokkan_LeftControllerGrab;
+        public InputAction @RightControllerRotate => m_Wrapper.m_Mencocokkan_RightControllerRotate;
         public InputActionMap Get() { return m_Wrapper.m_Mencocokkan; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -3607,22 +3471,34 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         {
             if (m_Wrapper.m_MencocokkanActionsCallbackInterface != null)
             {
-                @LeftControllerGrab.started -= m_Wrapper.m_MencocokkanActionsCallbackInterface.OnLeftControllerGrab;
-                @LeftControllerGrab.performed -= m_Wrapper.m_MencocokkanActionsCallbackInterface.OnLeftControllerGrab;
-                @LeftControllerGrab.canceled -= m_Wrapper.m_MencocokkanActionsCallbackInterface.OnLeftControllerGrab;
+                @LeftControllerRotate.started -= m_Wrapper.m_MencocokkanActionsCallbackInterface.OnLeftControllerRotate;
+                @LeftControllerRotate.performed -= m_Wrapper.m_MencocokkanActionsCallbackInterface.OnLeftControllerRotate;
+                @LeftControllerRotate.canceled -= m_Wrapper.m_MencocokkanActionsCallbackInterface.OnLeftControllerRotate;
                 @RightControllerGrab.started -= m_Wrapper.m_MencocokkanActionsCallbackInterface.OnRightControllerGrab;
                 @RightControllerGrab.performed -= m_Wrapper.m_MencocokkanActionsCallbackInterface.OnRightControllerGrab;
                 @RightControllerGrab.canceled -= m_Wrapper.m_MencocokkanActionsCallbackInterface.OnRightControllerGrab;
+                @LeftControllerGrab.started -= m_Wrapper.m_MencocokkanActionsCallbackInterface.OnLeftControllerGrab;
+                @LeftControllerGrab.performed -= m_Wrapper.m_MencocokkanActionsCallbackInterface.OnLeftControllerGrab;
+                @LeftControllerGrab.canceled -= m_Wrapper.m_MencocokkanActionsCallbackInterface.OnLeftControllerGrab;
+                @RightControllerRotate.started -= m_Wrapper.m_MencocokkanActionsCallbackInterface.OnRightControllerRotate;
+                @RightControllerRotate.performed -= m_Wrapper.m_MencocokkanActionsCallbackInterface.OnRightControllerRotate;
+                @RightControllerRotate.canceled -= m_Wrapper.m_MencocokkanActionsCallbackInterface.OnRightControllerRotate;
             }
             m_Wrapper.m_MencocokkanActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @LeftControllerGrab.started += instance.OnLeftControllerGrab;
-                @LeftControllerGrab.performed += instance.OnLeftControllerGrab;
-                @LeftControllerGrab.canceled += instance.OnLeftControllerGrab;
+                @LeftControllerRotate.started += instance.OnLeftControllerRotate;
+                @LeftControllerRotate.performed += instance.OnLeftControllerRotate;
+                @LeftControllerRotate.canceled += instance.OnLeftControllerRotate;
                 @RightControllerGrab.started += instance.OnRightControllerGrab;
                 @RightControllerGrab.performed += instance.OnRightControllerGrab;
                 @RightControllerGrab.canceled += instance.OnRightControllerGrab;
+                @LeftControllerGrab.started += instance.OnLeftControllerGrab;
+                @LeftControllerGrab.performed += instance.OnLeftControllerGrab;
+                @LeftControllerGrab.canceled += instance.OnLeftControllerGrab;
+                @RightControllerRotate.started += instance.OnRightControllerRotate;
+                @RightControllerRotate.performed += instance.OnRightControllerRotate;
+                @RightControllerRotate.canceled += instance.OnRightControllerRotate;
             }
         }
     }
@@ -3652,15 +3528,6 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         {
             if (m_NoncontinuousMoveSchemeIndex == -1) m_NoncontinuousMoveSchemeIndex = asset.FindControlSchemeIndex("Noncontinuous Move");
             return asset.controlSchemes[m_NoncontinuousMoveSchemeIndex];
-        }
-    }
-    private int m_NewcontrolschemeSchemeIndex = -1;
-    public InputControlScheme NewcontrolschemeScheme
-    {
-        get
-        {
-            if (m_NewcontrolschemeSchemeIndex == -1) m_NewcontrolschemeSchemeIndex = asset.FindControlSchemeIndex("New control scheme");
-            return asset.controlSchemes[m_NewcontrolschemeSchemeIndex];
         }
     }
     public interface IXRIHeadActions
@@ -3758,23 +3625,19 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     }
     public interface IControllerActions
     {
-        void OnLeftControllerRotate(InputAction.CallbackContext context);
-        void OnRightControllerRotate(InputAction.CallbackContext context);
+        void OnScale(InputAction.CallbackContext context);
         void OnLeftControllerGrab(InputAction.CallbackContext context);
         void OnRightControllerGrab(InputAction.CallbackContext context);
-        void OnScale(InputAction.CallbackContext context);
-        void OnRotateZAxis(InputAction.CallbackContext context);
-        void OnTriggerPress(InputAction.CallbackContext context);
-        void OnGripPress(InputAction.CallbackContext context);
         void OnZOOM(InputAction.CallbackContext context);
-    }
-    public interface IRightControllerActions
-    {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnRotateZAxis(InputAction.CallbackContext context);
+        void OnLeftControllerRotate(InputAction.CallbackContext context);
+        void OnRightControllerRotate(InputAction.CallbackContext context);
     }
     public interface IMencocokkanActions
     {
-        void OnLeftControllerGrab(InputAction.CallbackContext context);
+        void OnLeftControllerRotate(InputAction.CallbackContext context);
         void OnRightControllerGrab(InputAction.CallbackContext context);
+        void OnLeftControllerGrab(InputAction.CallbackContext context);
+        void OnRightControllerRotate(InputAction.CallbackContext context);
     }
 }

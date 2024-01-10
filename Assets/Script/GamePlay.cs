@@ -62,13 +62,16 @@ public class GamePlay : MonoBehaviour
             this.mode = "Observe";
             B_Mode.transform.Find("Text").GetComponent<TextMeshProUGUI>().SetText("Quiz Mode");
         }
+        bone.NamePlateSwitch();
     }
     
     // Update is called once per frame
     void SubmitAnswer(){
-        float score = getScore();
-        PapanNilai = PapanUI.transform.Find("PapanNilai").GetComponent<TextMeshProUGUI>();
-        PapanNilai.text = "Nilai : " + score;
+        if(mode == "Quiz"){
+            float score = getScore();
+            PapanNilai = PapanUI.transform.Find("PapanNilai").GetComponent<TextMeshProUGUI>();
+            PapanNilai.text = "Nilai : " + score;
+        }
     }
     void Update()
     {
