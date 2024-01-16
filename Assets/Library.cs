@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit.UI;
 
 public class Library : MonoBehaviour
 {
@@ -169,5 +170,13 @@ public class Library : MonoBehaviour
             transform.Find("Desc").Find("Judul").GetComponent<TextMeshProUGUI>().SetText(key);
             transform.Find("Desc").Find("Detail").Find("Content").GetComponent<TextMeshProUGUI>().SetText(this.Library_Bone[key]);
         }
+    }
+    public void TVUIEnable(){
+        TrackedDeviceGraphicRaycaster tv = GetComponent<TrackedDeviceGraphicRaycaster>();
+        tv.enabled = true;
+    }
+    public void TVUIDisable(){
+        TrackedDeviceGraphicRaycaster tv = GetComponent<TrackedDeviceGraphicRaycaster>();
+        tv.enabled = false;
     }
 }

@@ -32,10 +32,10 @@ public class Bone : MonoBehaviour
     public void setBoneNamePlate(){
         GameObject NamePlateTemp = Instantiate(this.NamePlate);
         Debug.Log(TheBone);
-        NamePlateTemp.transform.localScale = new Vector3(1.5f/TheBone.transform.localScale.x,1.5f/TheBone.transform.localScale.y,1.5f/TheBone.transform.localScale.z);
+        // NamePlateTemp.transform.localScale = new Vector3(1.5f/TheBone.transform.localScale.x,1.5f/TheBone.transform.localScale.y,1.5f/TheBone.transform.localScale.z);
         partContainer = TheBone.transform.Find("Part");
         foreach(Transform child in partContainer.transform){
-            Vector3 namePosition = child.position + (child.forward*Random.Range(1.3f,1.7f));
+            Vector3 namePosition = child.position + (child.forward*Random.Range(2.0f,3.0f));
             namePosition = namePosition + new Vector3(Random.Range(-0.1f,0.1f),Random.Range(-0.1f,0.1f),Random.Range(-0.1f,0.1f));
             GameObject name = Instantiate(NamePlateTemp,child);
             name.SetActive(true);
@@ -60,6 +60,15 @@ public class Bone : MonoBehaviour
             }else{
                 trackingComponent.enabled = false;
             }
+        }
+    }
+    [SerializeField]
+    TrackedDeviceGraphicRaycaster TVUITrack;
+    public void TVSwitch(){
+        if(!TVUITrack.isActiveAndEnabled){
+            TVUITrack.enabled = true;
+        }else{
+            TVUITrack.enabled = false;
         }
     }
 }

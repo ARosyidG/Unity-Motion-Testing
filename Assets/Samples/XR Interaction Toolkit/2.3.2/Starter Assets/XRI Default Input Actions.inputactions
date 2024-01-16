@@ -2171,6 +2171,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "buttonpressed",
+                    "type": "Button",
+                    "id": "c69125c3-78bc-47d9-9502-e5efe1128dc4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -2281,6 +2290,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "RightControllerRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "725c8447-8f71-4b52-9065-25dd422d61de",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerRight>/triggerpressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "buttonpressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7ac19dcd-74dd-4819-88d0-b70d768dd848",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerLeft>/grippressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "buttonpressed",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

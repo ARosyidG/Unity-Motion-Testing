@@ -12,7 +12,7 @@ public class GamePlay : MonoBehaviour
     GameObject GrabableNamePlate;
     // Transform partContainer;
     [SerializeField]
-    Bone bone;
+    public Bone bone;
     [SerializeField]
     public GameObject SelectedBone;
     [SerializeField]
