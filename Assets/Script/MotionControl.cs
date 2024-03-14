@@ -21,6 +21,8 @@ public class MotionControl : MonoBehaviour
     public XRRayInteractor RightController;
     float DistanceBetweenReticleInBeginingOfScaling;
     Vector3 controlledObjectScaleInBeginingOfScaling;
+    [SerializeField]
+    GameObject testingCube;
     
 
     void Start()
@@ -40,6 +42,7 @@ public class MotionControl : MonoBehaviour
     }
     public void RotateSetUp(GameObject obj, XRRayInteractor Ray){
         this.ControlledObject = obj;
+        // RayReticle.transform.position= obj.transform.position;
         print(this.ControlledObject.name);
         if(obj != null){
             RayReticle.transform.position= Ray.rayOriginTransform.position + Ray.rayOriginTransform.forward*30;
@@ -81,9 +84,9 @@ public class MotionControl : MonoBehaviour
         if(ControlledObject != null){
             Vector3 endpointTargetPotition = Ray.rayOriginTransform.position + Ray.rayOriginTransform.forward*30;
             Vector3 endPointPotition = RayReticle.transform.position;
-            if(Vector3.Distance(endPointPotition,endpointTargetPotition) > .1f){
+            if(Vector3.Distance(Camera.main.WorldToViewportPoint(endpointTargetPotition),Camera.main.WorldToViewportPoint(endPointPotition)) > .1f){
                 directionOfTravel = (Camera.main.WorldToViewportPoint(endpointTargetPotition) - Camera.main.WorldToViewportPoint(endPointPotition))*10;
-                RayReticle.transform.Translate(directionOfTravel * 5 * Time.deltaTime, Space.World);
+                RayReticle.transform.Translate(directionOfTravel * 5 * Time.deltaTime);
             }else{
                 directionOfTravel = new Vector3(0,0,0);
             }
@@ -93,6 +96,7 @@ public class MotionControl : MonoBehaviour
             Vector3 cameraRelativeX = directionOfTravel.y * cameraX;
             Vector3 cameraRelativeY = directionOfTravel.x * -1 * cameraY;
             
+            Debug.Log(directionOfTravel);
             Vector3 controllerMotionInput = (cameraRelativeX + cameraRelativeY ); 
             ControlledObject.transform.Rotate(controllerMotionInput * 50 * Time.deltaTime,Space.World);
         }else{

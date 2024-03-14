@@ -28,6 +28,7 @@ public class InputManager : MonoBehaviour
     GamePlay gamePlay;
     [SerializeField]
     Library TV;
+    Switch Switch;
     void Awake()
     {
         gamePlay = GetComponent<GamePlay>(); 
@@ -38,9 +39,9 @@ public class InputManager : MonoBehaviour
         Controller = playerInput.Controller;
         Mencocokkan = playerInput.Mencocokkan;
         MotionControl = GetComponent<MotionControl>();
+        Switch = GetComponent<Switch>();
     }
     void start(){
-        
     }
     private void OnEnable(){
         Debug.Log("enable");
@@ -93,21 +94,27 @@ public class InputManager : MonoBehaviour
         }
         if (Controller.Scale.IsPressed()){
             MotionControl.Scalling();
-            TV.TVUIDisable();
+            Switch.TVUIDisable();
+            Switch.PapanUDisable();
         }else if(Controller.LeftControllerGrab.IsPressed()){
             MotionControl.Translating(LeftRay);
             MotionControl.Zoom(Controller.ZOOM.ReadValue<Vector2>());
-            TV.TVUIDisable();
+            Switch.TVUIDisable();
+            Switch.PapanUDisable();
         }else if(Controller.RightControllerGrab.IsPressed()){
             MotionControl.Translating(RightRay);
             MotionControl.Zoom(Controller.ZOOM.ReadValue<Vector2>());
-            TV.TVUIDisable();
+            Switch.TVUIDisable();
+            Switch.PapanUDisable();
         }else if(Controller.Scale.WasReleasedThisFrame()){
-            TV.TVUIEnable();
+            Switch.TVUIEnable();
+            Switch.PapanUIEnable();
         }else if(Controller.LeftControllerGrab.WasReleasedThisFrame()){
-            TV.TVUIEnable();
+            Switch.TVUIEnable();
+            Switch.PapanUIEnable();
         }else if(Controller.RightControllerGrab.WasReleasedThisFrame()){
-            TV.TVUIEnable();
+            Switch.TVUIEnable();
+            Switch.PapanUIEnable();
         }
 
         //Rotate
@@ -132,41 +139,47 @@ public class InputManager : MonoBehaviour
 
         }else if(Controller.LeftControllerRotate.IsPressed()){
             MotionControl.Rotating(LeftRay);
-            TV.TVUIDisable();
+            Switch.TVUIDisable();
+            Switch.PapanUDisable();
         }else if(Controller.RightControllerRotate.IsPressed()){
             MotionControl.Rotating(RightRay);
-            TV.TVUIDisable();
+            Switch.TVUIDisable();
+            Switch.PapanUDisable();
         }else if(Controller.LeftControllerRotate.WasReleasedThisFrame()){
-            TV.TVUIEnable();
+            Switch.TVUIEnable();
+            Switch.PapanUIEnable();
         }else if(Controller.RightControllerRotate.WasReleasedThisFrame()){
-            TV.TVUIEnable();
+            Switch.TVUIEnable();
+            Switch.PapanUIEnable();
         }
         RaycastResult Result;
         if(LeftRay.TryGetCurrentUIRaycastResult(out Result)){
             // Debug.Log(Result);
             Controller.Disable();
-            // TV.TVUIDisable();
             if(Mencocokkan.LeftControllerGrab.WasPressedThisFrame() && ActiveRay == null && Result.gameObject.layer == 6){
+                Switch.TVUIDisable();
                 ActiveRay = LeftRay; 
                 SetPartName(GrabableNamePlate, Result);
                 MotionControl.TranslateSetUp(GrabableNamePlate,LeftRay);
-                tulang.NamePlateSwitch();
+                // tulang.NamePlateSwitch();
+                Switch.NamePlateEnable();
                 
                 // Debug.Log("lll");
             }
         }else if (RightRay.TryGetCurrentUIRaycastResult(out Result)){
             Controller.Disable();
-            // TV.TVUIDisable();
             if(Mencocokkan.RightControllerGrab.WasPressedThisFrame() && ActiveRay == null && Result.gameObject.layer == 6){
+                Switch.TVUIDisable();
                 ActiveRay = RightRay; 
                 SetPartName(GrabableNamePlate, Result);
                 MotionControl.TranslateSetUp(GrabableNamePlate,RightRay);
-                tulang.NamePlateSwitch();
+                // tulang.NamePlateSwitch();
+                Switch.NamePlateEnable();
                 
             }
         }else{
             Controller.Enable();
-            // TV.TVUIEnable();
+            // Switch.TVUIEnable();
         }
         if(Mencocokkan.LeftControllerGrab.IsPressed() && ActiveRay == LeftRay){
             MotionControl.Translating(LeftRay);
@@ -178,13 +191,17 @@ public class InputManager : MonoBehaviour
             Controller.Enable();
             ActiveRay = null;
             // tulang.TVSwitch();
-            TV.TVUIEnable();
+            Switch.NamePlateDisable();
+            Switch.TVUIEnable();
+            Switch.PapanUIEnable();
         }else if(ActiveRay == RightRay && Mencocokkan.RightControllerGrab.WasReleasedThisFrame()){
             gamePlay.SetNameOfPlateNameOnBone(RightRay);
             Controller.Enable();
             ActiveRay = null;
             // tulang.TVSwitch();
-            TV.TVUIEnable();
+            Switch.NamePlateDisable();
+            Switch.TVUIEnable();
+            Switch.PapanUIEnable();
         }
         // if(Mencocokkan.LeftControllerGrab.WasPressedThisFrame()){
         //     Controller.Disable();

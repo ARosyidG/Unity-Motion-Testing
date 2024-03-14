@@ -26,6 +26,7 @@ public class GamePlay : MonoBehaviour
     Button B_Mode;
     [SerializeField]
     GameObject TVUI;
+    Switch Switch;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,7 @@ public class GamePlay : MonoBehaviour
         SubmitAnswerButton.onClick.AddListener(SubmitAnswer);
         // changeBone(partSelection);
         // changeBone(SelectedBone);
+        Switch = GetComponent<Switch>();
         mode = "Quiz";
         B_Mode = PapanUI.transform.Find("BMode").GetComponent<Button>();
         B_Mode.onClick.AddListener(ChangeMode);
@@ -51,6 +53,7 @@ public class GamePlay : MonoBehaviour
             }
             this.mode = "Quiz";
             B_Mode.transform.Find("Text").GetComponent<TextMeshProUGUI>().SetText("Observe Mode");
+            Switch.NamePlateDisable();
         }else{
             Transform PartContainer = bone.TheBone.transform.Find("Part");
             Debug.Log("Observe Mode");
@@ -61,8 +64,9 @@ public class GamePlay : MonoBehaviour
             }
             this.mode = "Observe";
             B_Mode.transform.Find("Text").GetComponent<TextMeshProUGUI>().SetText("Quiz Mode");
+            Switch.NamePlateEnable();
         }
-        bone.NamePlateSwitch();
+        // bone.NamePlateSwitch();
     }
     
     // Update is called once per frame
@@ -91,7 +95,7 @@ public class GamePlay : MonoBehaviour
             }
         }
         GrabableNamePlate.transform.position = new Vector3(-1,-5,-1);
-        bone.NamePlateSwitch();
+        // bone.NamePlateSwitch();
         if (bone.TheBone.name == "PartSelection"){
             if(RNamePlate.gameObject != null){
                 NamePlate namePlate = RNamePlate.gameObject.transform.parent.parent.GetComponent<NamePlate>();
