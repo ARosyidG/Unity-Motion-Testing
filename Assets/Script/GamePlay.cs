@@ -22,7 +22,7 @@ public class GamePlay : MonoBehaviour
     [SerializeField]
     public GameObject partSelection;
     Boolean isBoneSelected = false;
-    string mode;
+    public string mode;
     Button B_Mode;
     [SerializeField]
     GameObject TVUI;
@@ -72,7 +72,7 @@ public class GamePlay : MonoBehaviour
     // Update is called once per frame
     void SubmitAnswer(){
         if(mode == "Quiz"){
-            float score = getScore();
+            float score = Mathf.Round(getScore());
             PapanNilai = PapanUI.transform.Find("PapanNilai").GetComponent<TextMeshProUGUI>();
             PapanNilai.text = "Nilai : " + score;
         }
@@ -121,7 +121,7 @@ public class GamePlay : MonoBehaviour
             NamePlate namePlate = part.Find("NamePlatePointer").GetComponent<NamePlate>(); 
             namePlate.setAnswer();
             if(namePlate.getAnswer()){
-                score += (100/partContainer.childCount);
+                score += (100.0f/partContainer.childCount);
             }
             Debug.Log(score);
         }

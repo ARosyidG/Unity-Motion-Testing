@@ -37,11 +37,11 @@ public class Switch : MonoBehaviour
         Debug.Log("Disable Name Plate");
     }
     public void PapanUIEnable(){
-        Debug.Log("panan NYALA");
+        Debug.Log("papan NYALA");
         PapanUI.enabled = true;
     }
     public void PapanUDisable(){
-        Debug.Log("panan mati");
+        Debug.Log("papan mati");
         PapanUI.enabled = false;
     }
 

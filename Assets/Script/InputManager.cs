@@ -95,25 +95,43 @@ public class InputManager : MonoBehaviour
         if (Controller.Scale.IsPressed()){
             MotionControl.Scalling();
             Switch.TVUIDisable();
+            if(gamePlay.mode == "Observe"){
+                Switch.NamePlateDisable();
+            }
             Switch.PapanUDisable();
         }else if(Controller.LeftControllerGrab.IsPressed()){
             MotionControl.Translating(LeftRay);
             MotionControl.Zoom(Controller.ZOOM.ReadValue<Vector2>());
             Switch.TVUIDisable();
+            if(gamePlay.mode == "Observe"){
+                Switch.NamePlateDisable();
+            }
             Switch.PapanUDisable();
         }else if(Controller.RightControllerGrab.IsPressed()){
             MotionControl.Translating(RightRay);
             MotionControl.Zoom(Controller.ZOOM.ReadValue<Vector2>());
             Switch.TVUIDisable();
+            if(gamePlay.mode == "Observe"){
+                Switch.NamePlateDisable();
+            }
             Switch.PapanUDisable();
         }else if(Controller.Scale.WasReleasedThisFrame()){
+            if(gamePlay.mode == "Observe"){
+                Switch.NamePlateEnable();
+            }
             Switch.TVUIEnable();
             Switch.PapanUIEnable();
         }else if(Controller.LeftControllerGrab.WasReleasedThisFrame()){
             Switch.TVUIEnable();
+            if(gamePlay.mode == "Observe"){
+                Switch.NamePlateEnable();
+            }
             Switch.PapanUIEnable();
         }else if(Controller.RightControllerGrab.WasReleasedThisFrame()){
             Switch.TVUIEnable();
+            if(gamePlay.mode == "Observe"){
+                Switch.NamePlateEnable();
+            }
             Switch.PapanUIEnable();
         }
 
@@ -140,15 +158,27 @@ public class InputManager : MonoBehaviour
         }else if(Controller.LeftControllerRotate.IsPressed()){
             MotionControl.Rotating(LeftRay);
             Switch.TVUIDisable();
+            if(gamePlay.mode == "Observe"){
+                Switch.NamePlateDisable();
+            }
             Switch.PapanUDisable();
         }else if(Controller.RightControllerRotate.IsPressed()){
             MotionControl.Rotating(RightRay);
             Switch.TVUIDisable();
+            if(gamePlay.mode == "Observe"){
+                Switch.NamePlateDisable();
+            }
             Switch.PapanUDisable();
         }else if(Controller.LeftControllerRotate.WasReleasedThisFrame()){
+            if(gamePlay.mode == "Observe"){
+                Switch.NamePlateEnable();
+            }
             Switch.TVUIEnable();
             Switch.PapanUIEnable();
         }else if(Controller.RightControllerRotate.WasReleasedThisFrame()){
+            if(gamePlay.mode == "Observe"){
+                Switch.NamePlateEnable();
+            }
             Switch.TVUIEnable();
             Switch.PapanUIEnable();
         }
@@ -191,6 +221,7 @@ public class InputManager : MonoBehaviour
             Controller.Enable();
             ActiveRay = null;
             // tulang.TVSwitch();
+            
             Switch.NamePlateDisable();
             Switch.TVUIEnable();
             Switch.PapanUIEnable();
