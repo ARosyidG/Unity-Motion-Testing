@@ -52,5 +52,6 @@
         "temp/":true,
         "Temp/":true
     },
-    "dotnet.defaultSolution": "Unity-Motion-Testing.sln"
+    "dotnet.defaultSolution": "Unity-Motion-Testing.sln",
+    "dotnet.preferCSharpExtension": true
 }

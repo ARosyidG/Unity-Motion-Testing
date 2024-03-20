@@ -27,9 +27,11 @@ public class GamePlay : MonoBehaviour
     [SerializeField]
     GameObject TVUI;
     Switch Switch;
+    Button SettingButton;
     // Start is called before the first frame update
     void Start()
     {
+        
         SubmitAnswerButton = PapanUI.transform.Find("BSubmitAnswer").GetComponent<Button>();
         SubmitAnswerButton.onClick.AddListener(SubmitAnswer);
         // changeBone(partSelection);
@@ -38,11 +40,12 @@ public class GamePlay : MonoBehaviour
         mode = "Quiz";
         B_Mode = PapanUI.transform.Find("BMode").GetComponent<Button>();
         B_Mode.onClick.AddListener(ChangeMode);
-        
+        SettingButton =SettingButton = TVUI.transform.Find("OpenSetting").GetComponent<Button>();
         
     }
     void ChangeMode(){
-        
+        GameObject DaftarTulang = PapanUI.transform.Find("Scroll").gameObject;
+        GameObject ObesrveModeNotice = PapanUI.transform.Find("OModeTEXT").gameObject;
         if(this.mode == "Observe"){
             Transform PartContainer = bone.TheBone.transform.Find("Part");
             Debug.Log("Quiz Mode");
@@ -53,7 +56,10 @@ public class GamePlay : MonoBehaviour
             }
             this.mode = "Quiz";
             B_Mode.transform.Find("Text").GetComponent<TextMeshProUGUI>().SetText("Observe Mode");
+            DaftarTulang.SetActive(true);
+            ObesrveModeNotice.SetActive(false);
             Switch.NamePlateDisable();
+
         }else{
             Transform PartContainer = bone.TheBone.transform.Find("Part");
             Debug.Log("Observe Mode");
@@ -64,11 +70,12 @@ public class GamePlay : MonoBehaviour
             }
             this.mode = "Observe";
             B_Mode.transform.Find("Text").GetComponent<TextMeshProUGUI>().SetText("Quiz Mode");
+            DaftarTulang.SetActive(false);
+            ObesrveModeNotice.SetActive(true);
             Switch.NamePlateEnable();
         }
         // bone.NamePlateSwitch();
     }
-    
     // Update is called once per frame
     void SubmitAnswer(){
         if(mode == "Quiz"){

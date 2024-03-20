@@ -13,10 +13,15 @@ public class Library : MonoBehaviour
     [SerializeField]
     GameObject Tutorial;
     Button B_Tutorial;
+    Button SettingButton;
+    GameObject SettingUI;
     void Start()
     {
         B_Tutorial = transform.Find("WantTutorial").GetComponent<Button>();
         B_Tutorial.onClick.AddListener(gotToTutorial);
+        SettingButton = transform.Find("OpenSetting").GetComponent<Button>();
+        SettingButton.onClick.AddListener(setting);
+        SettingUI = transform.Find("Setting").gameObject;
         // B_Tutorial.onClick?.Invoke();
         Library_Bone.Add(
             "OS COXAE",
@@ -162,6 +167,18 @@ public class Library : MonoBehaviour
 
         gameObject.SetActive(false);
     }
+    void setting(){
+        if(SettingUI.activeInHierarchy){
+            SettingUI.SetActive(false);
+            transform.Find("Desc").gameObject.SetActive(true);
+            SettingButton.gameObject.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "Setting";
+
+        }else{
+            SettingUI.SetActive(true);
+            transform.Find("Desc").gameObject.SetActive(false);
+            SettingButton.gameObject.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "Exit Setting";
+        }
+    }
     public void Observe(string key)
     {
         if (this.Library_Bone.ContainsKey(key))
@@ -179,4 +196,5 @@ public class Library : MonoBehaviour
         TrackedDeviceGraphicRaycaster tv = GetComponent<TrackedDeviceGraphicRaycaster>();
         tv.enabled = false;
     }
+    
 }

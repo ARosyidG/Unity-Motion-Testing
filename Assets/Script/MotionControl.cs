@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class MotionControl : MonoBehaviour
@@ -23,14 +26,28 @@ public class MotionControl : MonoBehaviour
     Vector3 controlledObjectScaleInBeginingOfScaling;
     [SerializeField]
     GameObject testingCube;
-    
-
+    float RotateSpeed; 
+    [SerializeField]
+    Slider RotateSpeedSlider;
     void Start()
     {
+        RotateSpeed = 5;
         RayReticle = new GameObject("RayReticle");
         LeftRayReticle = new GameObject("LeftRayReticle");
         RightRayReticle = new GameObject("RightRayReticle");
+        RotateSpeedSlider.onValueChanged.AddListener(ChangeRotateSpeed);
     }
+
+    private void ChangeRotateSpeed(float arg0)
+    {
+        // throw new NotImplementedException();
+        // Debug.Log("LOLO");
+        RotateSpeed = RotateSpeedSlider.value;
+        RotateSpeedSlider.transform.Find("value").GetComponent<TextMeshProUGUI>().text = RotateSpeed.ToString();
+    }
+
+    
+
 
     // Update is called once per frame
     void Update()
@@ -82,6 +99,7 @@ public class MotionControl : MonoBehaviour
     Vector3 directionOfTravel;
     public void Rotating(XRRayInteractor Ray){
         if(ControlledObject != null){
+            
             Vector3 endpointTargetPotition = Ray.rayOriginTransform.position + Ray.rayOriginTransform.forward*30;
             Vector3 endPointPotition = RayReticle.transform.position;
             if(Vector3.Distance(Camera.main.WorldToViewportPoint(endpointTargetPotition),Camera.main.WorldToViewportPoint(endPointPotition)) > .1f){
@@ -98,9 +116,9 @@ public class MotionControl : MonoBehaviour
             
             Debug.Log(directionOfTravel);
             Vector3 controllerMotionInput = (cameraRelativeX + cameraRelativeY ); 
-            ControlledObject.transform.Rotate(controllerMotionInput * 50 * Time.deltaTime,Space.World);
+            ControlledObject.transform.Rotate(controllerMotionInput * (RotateSpeed*15f) * Time.deltaTime,Space.World);
         }else{
-            Debug.Log("null");
+            Debug.Log("There is no Object");
         }
         
     }
