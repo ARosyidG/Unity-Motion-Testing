@@ -2167,36 +2167,6 @@ Transform:
   m_Father: {fileID: 1158175524}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &232331939
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 232331940}
-  m_Layer: 0
-  m_Name: Tuberositas ossis sacri
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &232331940
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232331939}
-  m_LocalRotation: {x: -0.3668738, y: -7.888608e-31, z: 1.5777216e-30, w: 0.9302707}
-  m_LocalPosition: {x: -1.1352, y: -0.33599976, z: 1.1088003}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 618944496}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: -43.046, y: 0, z: 0}
 --- !u!1 &236248842
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,7 +2182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &236248843
 Transform:
   m_ObjectHideFlags: 0
@@ -2225,7 +2195,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618944496}
-  m_RootOrder: 9
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 82.078, y: 0, z: 0}
 --- !u!1 &240602452
 GameObject:
@@ -2255,7 +2225,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 839838721}
-  m_RootOrder: 15
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: -102.1, y: 0, z: 0}
 --- !u!1 &242669897
 GameObject:
@@ -2667,36 +2637,6 @@ Transform:
   m_Father: {fileID: 1161533246}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 105.6, y: 0, z: 0}
---- !u!1 &277106586
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 277106587}
-  m_Layer: 0
-  m_Name: Facies pelvica ossis sacri
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &277106587
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277106586}
-  m_LocalRotation: {x: 0.81305087, y: 6.2473654e-24, z: 3.3305128e-24, w: 0.5821927}
-  m_LocalPosition: {x: 0, y: -0.045599975, z: -0.1343992}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 618944496}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 108.79001, y: 0, z: 0}
 --- !u!1 &277109858
 GameObject:
   m_ObjectHideFlags: 0
@@ -3460,36 +3400,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &341736367
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 341736368}
-  m_Layer: 3
-  m_Name: Ramus inferior ossis pubis
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &341736368
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341736367}
-  m_LocalRotation: {x: -0.5986775, y: -0.37627813, z: 0.37627813, w: 0.5986775}
-  m_LocalPosition: {x: -1.191, y: -0.84, z: -1.67}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1513381836}
-  m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: -154.3, y: 90, z: -90}
 --- !u!4 &343106480 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2eeeb8b33559f434fa123e7f88dfe0fb, type: 3}
@@ -3631,7 +3541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &350692987
 Transform:
   m_ObjectHideFlags: 0
@@ -3644,7 +3554,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618944496}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -12.9, y: -49.79, z: 24.327}
 --- !u!1 &351701001
 GameObject:
@@ -3661,7 +3571,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &351701002
 Transform:
   m_ObjectHideFlags: 0
@@ -4297,36 +4207,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402260884}
   m_CullTransparentMesh: 1
---- !u!1 &407181476
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 407181477}
-  m_Layer: 3
-  m_Name: Ramus superior ossis pubis
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &407181477
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407181476}
-  m_LocalRotation: {x: -0.7599507, y: 0.15465648, z: -0.60017276, w: -0.19582912}
-  m_LocalPosition: {x: -0.666, y: -1.065, z: -0.843}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1513381836}
-  m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: -208.9, y: -76.6, z: 0}
 --- !u!1 &416570650
 GameObject:
   m_ObjectHideFlags: 0
@@ -4709,7 +4589,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 839838721}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &433025899
 GameObject:
@@ -5029,7 +4909,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1513381836}
-  m_RootOrder: 18
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: -148.31, y: -62.5, z: 0}
 --- !u!1 &465558215
 GameObject:
@@ -5166,36 +5046,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465558215}
   m_CullTransparentMesh: 1
---- !u!1 &477669765
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 477669766}
-  m_Layer: 0
-  m_Name: Basis ossis sacri
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &477669766
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477669765}
-  m_LocalRotation: {x: 0.6883769, y: -1.5777218e-30, z: -1.13398755e-30, w: 0.72535324}
-  m_LocalPosition: {x: 0.3192, y: -0.9719995, z: 0.39600024}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 618944496}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 87.004, y: 0, z: 0}
 --- !u!1 &479130260
 GameObject:
   m_ObjectHideFlags: 0
@@ -5409,36 +5259,6 @@ Transform:
   m_Father: {fileID: 1624800494}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &499070887
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 499070888}
-  m_Layer: 0
-  m_Name: Facies dorsalis ossis sacri
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &499070888
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499070887}
-  m_LocalRotation: {x: -0.37332356, y: -0.48711625, z: -0.24197622, w: 0.7515283}
-  m_LocalPosition: {x: -0.2544, y: 0.069600075, z: 0.4224012}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 618944496}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: -52.832, y: -65.9, z: 0}
 --- !u!1 &505383562
 GameObject:
   m_ObjectHideFlags: 0
@@ -5735,8 +5555,8 @@ RectTransform:
   m_Father: {fileID: 2051507303}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.44444445, y: 0}
+  m_AnchorMax: {x: 0.44444445, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5806,7 +5626,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1513381836}
-  m_RootOrder: 17
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: -148.31, y: -75.9, z: 0}
 --- !u!1 &595502032
 GameObject:
@@ -6111,24 +5931,15 @@ Transform:
   m_Children:
   - {fileID: 351701002}
   - {fileID: 966437973}
-  - {fileID: 1150451328}
   - {fileID: 350692987}
   - {fileID: 2027437683}
-  - {fileID: 1281318418}
-  - {fileID: 499070888}
-  - {fileID: 232331940}
   - {fileID: 662282803}
   - {fileID: 236248843}
-  - {fileID: 1349015956}
-  - {fileID: 1641214965}
-  - {fileID: 277106587}
   - {fileID: 1603840315}
   - {fileID: 1472017911}
   - {fileID: 1674519531}
   - {fileID: 1522068975}
   - {fileID: 864277327}
-  - {fileID: 477669766}
-  - {fileID: 1065237961}
   m_Father: {fileID: 2843478764693124413}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6927,7 +6738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &648893432
 Transform:
   m_ObjectHideFlags: 0
@@ -7092,7 +6903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &662282803
 Transform:
   m_ObjectHideFlags: 0
@@ -7105,7 +6916,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618944496}
-  m_RootOrder: 8
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 39.19, y: 0, z: 0}
 --- !u!1 &663600714
 GameObject:
@@ -7774,7 +7585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &705507994
 Light:
   m_ObjectHideFlags: 0
@@ -8051,36 +7862,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713609409}
   m_CullTransparentMesh: 1
---- !u!1 &718227259
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 718227260}
-  m_Layer: 3
-  m_Name: Corpus ossis ischii
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &718227260
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718227259}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0.085, y: 0.494, z: -1.46}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 839838721}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
 --- !u!1001 &736255545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8186,7 +7967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &743935059
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8335,36 +8116,6 @@ Transform:
   m_Father: {fileID: 825456915}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &771574084
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 771574085}
-  m_Layer: 3
-  m_Name: Ramus ossis ischii
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &771574085
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 771574084}
-  m_LocalRotation: {x: -0.4147778, y: 0.4147778, z: -0.57267743, w: 0.57267743}
-  m_LocalPosition: {x: -0.63, y: 0.521, z: -2.104}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 839838721}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 71.83, z: -90}
 --- !u!1 &781230293
 GameObject:
   m_ObjectHideFlags: 0
@@ -8879,15 +8630,11 @@ Transform:
   - {fileID: 1201311099}
   - {fileID: 843291340}
   - {fileID: 1526412555}
-  - {fileID: 718227260}
-  - {fileID: 771574085}
   - {fileID: 429308547}
   - {fileID: 240602453}
   - {fileID: 2060991396}
   - {fileID: 1232431554}
   - {fileID: 1776039562}
-  - {fileID: 1395086369}
-  - {fileID: 1071315840}
   m_Father: {fileID: 506608576457192056}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9192,7 +8939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &864277327
 Transform:
   m_ObjectHideFlags: 0
@@ -9205,7 +8952,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618944496}
-  m_RootOrder: 17
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: -86.711, y: 0, z: 0}
 --- !u!1 &882779822
 GameObject:
@@ -9825,7 +9572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &966437973
 Transform:
   m_ObjectHideFlags: 0
@@ -11356,36 +11103,6 @@ Transform:
   m_Father: {fileID: 307355486}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1065237960
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1065237961}
-  m_Layer: 0
-  m_Name: Foramina intervertebralia
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1065237961
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1065237960}
-  m_LocalRotation: {x: 0.000000029802322, y: 0.6484945, z: -0, w: 0.7612194}
-  m_LocalPosition: {x: 0.2448, y: 0.4992, z: -0.44399905}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 618944496}
-  m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: 0, y: 80.856, z: 0}
 --- !u!1 &1065298837
 GameObject:
   m_ObjectHideFlags: 0
@@ -11509,36 +11226,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &1071315839
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1071315840}
-  m_Layer: 3
-  m_Name: Ramus inferior ossis pubis
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1071315840
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071315839}
-  m_LocalRotation: {x: -0.37627813, y: 0.5986775, z: -0.5986775, w: 0.37627813}
-  m_LocalPosition: {x: -1.191, y: -0.84, z: -1.67}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 839838721}
-  m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 25.7, y: 90, z: -90}
 --- !u!1 &1071804156
 GameObject:
   m_ObjectHideFlags: 0
@@ -12095,7 +11782,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1103890232
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13029,7 +12716,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.44444445, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -13192,36 +12879,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149807370}
   m_CullTransparentMesh: 1
---- !u!1 &1150451327
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1150451328}
-  m_Layer: 0
-  m_Name: Facies auricularis ossis sacri
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1150451328
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1150451327}
-  m_LocalRotation: {x: 0.09310247, y: -0.47948402, z: -0.68746996, w: 0.53741235}
-  m_LocalPosition: {x: -1.3512, y: -0.68639976, z: 0.18959971}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 618944496}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 214, y: 129.1, z: 92.588}
 --- !u!1 &1158175523
 GameObject:
   m_ObjectHideFlags: 0
@@ -13654,36 +13311,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1173791168
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1173791169}
-  m_Layer: 3
-  m_Name: Ramus ossis ischii
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1173791169
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173791168}
-  m_LocalRotation: {x: -0.57267743, y: -0.57267743, z: 0.4147778, w: 0.4147778}
-  m_LocalPosition: {x: -0.63, y: 0.521, z: -2.104}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1513381836}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: -180, y: 71.83, z: -90}
 --- !u!1 &1178042563
 GameObject:
   m_ObjectHideFlags: 0
@@ -14013,7 +13640,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 839838721}
-  m_RootOrder: 17
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 31.69, y: -75.9, z: 0}
 --- !u!1 &1248261203
 GameObject:
@@ -14275,36 +13902,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &1281318417
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1281318418}
-  m_Layer: 0
-  m_Name: Processus articularis superior ossis sacri
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1281318418
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281318417}
-  m_LocalRotation: {x: -0.30629215, y: -1.577722e-30, z: 3.155444e-30, w: 0.9519376}
-  m_LocalPosition: {x: -0.5568, y: -0.4104, z: 1.2912003}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 618944496}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: -35.672, y: 0, z: 0}
 --- !u!1 &1283005911
 GameObject:
   m_ObjectHideFlags: 0
@@ -15094,36 +14691,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346229080}
   m_CullTransparentMesh: 1
---- !u!1 &1349015955
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1349015956}
-  m_Layer: 0
-  m_Name: Ala ossis sacri
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1349015956
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1349015955}
-  m_LocalRotation: {x: 0.29309735, y: -0, z: -0, w: 0.9560826}
-  m_LocalPosition: {x: -1.0320002, y: -0.8759995, z: 0.35040024}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 618944496}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 34.087, y: 0, z: 0}
 --- !u!1 &1350566671
 GameObject:
   m_ObjectHideFlags: 0
@@ -15741,36 +15308,6 @@ Transform:
   m_Father: {fileID: 648893432}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1395086368
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1395086369}
-  m_Layer: 3
-  m_Name: Ramus superior ossis pubis
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1395086369
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1395086368}
-  m_LocalRotation: {x: -0.19582927, y: -0.6001727, z: -0.1546566, w: 0.75995064}
-  m_LocalPosition: {x: -0.666, y: -1.065, z: -0.843}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 839838721}
-  m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: -28.9, y: -76.6, z: 0}
 --- !u!4 &1398008765 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5e08f2cbc83967c4eb518b0d7805720b, type: 3}
@@ -16094,7 +15631,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1513381836}
-  m_RootOrder: 15
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: -282.1, y: 0, z: 0}
 --- !u!1 &1472017910
 GameObject:
@@ -16111,7 +15648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1472017911
 Transform:
   m_ObjectHideFlags: 0
@@ -16124,7 +15661,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618944496}
-  m_RootOrder: 14
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 82.308, y: -146.281, z: -137.695}
 --- !u!1 &1472617484
 GameObject:
@@ -17188,15 +16725,11 @@ Transform:
   - {fileID: 173274571}
   - {fileID: 955825495}
   - {fileID: 706277045}
-  - {fileID: 1801465258}
-  - {fileID: 1173791169}
   - {fileID: 1677359554}
   - {fileID: 1468913024}
   - {fileID: 1658702498}
   - {fileID: 553816750}
   - {fileID: 448818057}
-  - {fileID: 407181477}
-  - {fileID: 341736368}
   m_Father: {fileID: 6049884609514066118}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17367,7 +16900,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1522068975
 Transform:
   m_ObjectHideFlags: 0
@@ -17380,7 +16913,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618944496}
-  m_RootOrder: 16
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -61.17, y: 0, z: 0}
 --- !u!1 &1524152530
 GameObject:
@@ -17787,7 +17320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1603840315
 Transform:
   m_ObjectHideFlags: 0
@@ -17800,7 +17333,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618944496}
-  m_RootOrder: 13
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -20.869, y: 0, z: 0}
 --- !u!1 &1612437027
 GameObject:
@@ -18247,36 +17780,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639148736}
   m_CullTransparentMesh: 1
---- !u!1 &1641214964
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1641214965}
-  m_Layer: 0
-  m_Name: Cornu sacrale
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1641214965
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641214964}
-  m_LocalRotation: {x: -0.6268758, y: 0, z: 0, w: 0.77911925}
-  m_LocalPosition: {x: -0.2448, y: 0.7392, z: -1.2167981}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 618944496}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: -77.64, y: 0, z: 0}
 --- !u!1 &1642434791
 GameObject:
   m_ObjectHideFlags: 0
@@ -18550,7 +18053,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1513381836}
-  m_RootOrder: 16
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: -299.02, y: -67.267, z: 64.399}
 --- !u!1 &1668218272
 GameObject:
@@ -18749,7 +18252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1674519531
 Transform:
   m_ObjectHideFlags: 0
@@ -18762,7 +18265,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618944496}
-  m_RootOrder: 15
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1677252040
 GameObject:
@@ -18828,7 +18331,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1513381836}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: -270, y: 0, z: 0}
 --- !u!1 &1678158094
 GameObject:
@@ -19554,7 +19057,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 839838721}
-  m_RootOrder: 18
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 31.69, y: -62.5, z: 0}
 --- !u!1 &1790050728
 GameObject:
@@ -19587,36 +19090,6 @@ Transform:
   m_Father: {fileID: 1285824034}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1801465257
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1801465258}
-  m_Layer: 3
-  m_Name: Corpus ossis ischii
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1801465258
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801465257}
-  m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.085, y: 0.494, z: -1.46}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1513381836}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: -180, y: 90, z: -90}
 --- !u!1 &1823463631
 GameObject:
   m_ObjectHideFlags: 0
@@ -21935,7 +21408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2027437683
 Transform:
   m_ObjectHideFlags: 0
@@ -21948,7 +21421,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618944496}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -38.703, y: 0, z: 0}
 --- !u!1 &2037737326
 GameObject:
@@ -22315,7 +21788,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 839838721}
-  m_RootOrder: 16
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: -119.020004, y: -67.267, z: 64.399}
 --- !u!4 &2072535997 stripped
 Transform:

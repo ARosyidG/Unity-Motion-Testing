@@ -108,6 +108,7 @@ public class GamePlay : MonoBehaviour
                 NamePlate namePlate = RNamePlate.gameObject.transform.parent.parent.GetComponent<NamePlate>();
                 namePlate.setAnswer();
                 if (namePlate.getAnswer()){
+                    bone.TheBone.transform.Find("Part").Find(RNamePlate.gameObject.name).Find("NamePlatePointer").gameObject.SetActive(false);
                     changeBone(bone.TheBone.transform.Find("Part").Find(RNamePlate.gameObject.name).gameObject);
                     isBoneSelected = true;
                 }
