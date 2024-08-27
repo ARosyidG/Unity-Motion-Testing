@@ -60,7 +60,7 @@ public class MotionControl : MonoBehaviour
     public void RotateSetUp(GameObject obj, XRRayInteractor Ray){
         this.ControlledObject = obj;
         // RayReticle.transform.position= obj.transform.position;
-        print(this.ControlledObject.name);
+        // Debug.Log(this.ControlledObject.name);
         if(obj != null){
             RayReticle.transform.position= Ray.rayOriginTransform.position + Ray.rayOriginTransform.forward*30;
         }
