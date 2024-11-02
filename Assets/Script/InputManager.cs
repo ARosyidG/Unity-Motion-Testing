@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-// using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -12,28 +9,58 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class InputManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     private XRIDefaultInputActions playerInput;
-    private XRIDefaultInputActions .ControllerActions Controller;
-    private XRIDefaultInputActions .MencocokkanActions Mencocokkan;
-    Camera cam;
-    MotionControl MotionControl;
-    public GameObject GrabableNamePlate; 
+    private XRIDefaultInputActions.ControllerActions Controller;
+    private XRIDefaultInputActions.MencocokkanActions Mencocokkan;
     public XRRayInteractor LeftRay;
     public XRRayInteractor RightRay;
-    PapanUI UI;
+    private XRRayInteractor ActiveRay = null;
+
+    private MotionControl MotionControl;
+    private GamePlay gamePlay;
+    private Switch Switch;
+    private PapanUI UI;
+
+    public GameObject GrabableNamePlate;
     public GameObject papanUI;
-    public XRRayInteractor ActiveRay = null;
-    [SerializeField]Bone tulang;
-    GamePlay gamePlay;
-    [SerializeField]
-    Library TV;
-    Switch Switch;
+
+    [SerializeField] private Bone tulang;
+    [SerializeField] private Library TV;
+    private Camera cam;
+
+
     void Awake()
     {
-        gamePlay = GetComponent<GamePlay>(); 
+        InitializeComponents();
+    }
+
+    void OnEnable()
+    {
+        Controller.Enable();
+        Mencocokkan.Enable();
+    }
+
+    void OnDisable()
+    {
+        Controller.Disable();
+        Mencocokkan.Disable();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            tulang.NamePlateSwitch();
+        }
+
+        HandleControllerInput();
+        HandleUIRaycast();
+    }
+
+    private void InitializeComponents()
+    {
+        gamePlay = GetComponent<GamePlay>();
         cam = Camera.main;
-        // UI.NamePlateColorChange(cam.transform);
         UI = papanUI.GetComponent<PapanUI>();
         playerInput = new XRIDefaultInputActions();
         Controller = playerInput.Controller;
@@ -41,220 +68,156 @@ public class InputManager : MonoBehaviour
         MotionControl = GetComponent<MotionControl>();
         Switch = GetComponent<Switch>();
     }
-    void start(){
-    }
-    private void OnEnable(){
-        Debug.Log("enable");
-        Controller.Enable();
-        Mencocokkan.Enable();
-    }
-    private void OnDisable(){
-        Controller.Disable();
-        Mencocokkan.Disable();
-    }
-    GameObject drag;
-    // Update is called once per frame
-    void Update()
+
+    private void HandleControllerInput()
     {
-        if(Input.GetKeyDown(KeyCode.Space)){
-            tulang.NamePlateSwitch();
+        if (Controller.Scale.WasPressedThisFrame())
+        {
+            StartCoroutine(HandleScale());
         }
-        //Scale and Grab
-        if(Controller.Scale.WasPressedThisFrame()){
-            Debug.Log("JALAN");
-            LeftRay.TryGetCurrent3DRaycastHit(out RaycastHit LefthitInfo);
-            RightRay.TryGetCurrent3DRaycastHit(out RaycastHit RighthitInfo);
-            GameObject controlledObject = null;
-            if(LefthitInfo.transform != null){
-                controlledObject = LefthitInfo.transform.gameObject;  
-            }
-            if(RighthitInfo.transform != null){
-                controlledObject = RighthitInfo.transform.gameObject;  
-            }
-            if((LefthitInfo.transform != null && LefthitInfo.transform != null) && (LefthitInfo.transform.gameObject.layer == 3 || RighthitInfo.transform.gameObject.layer == 3 )){
-                MotionControl.ScaleSetUp(controlledObject);
-            }else {
-                MotionControl.ScaleSetUp(null);
-            }
-        }else if(Controller.LeftControllerGrab.WasPerformedThisFrame() || Controller.RightControllerGrab.WasPerformedThisFrame()){
-            XRRayInteractor Ray = null;
-            if(Controller.LeftControllerGrab.WasPressedThisFrame()){
-                Ray = LeftRay;
-            }else if(Controller.RightControllerGrab.WasPressedThisFrame()){
-                Ray = RightRay;
-            }
-            // Debug.Log(Ray);
-            Ray.TryGetCurrent3DRaycastHit(out RaycastHit hitInfo);
-            if(hitInfo.transform != null && hitInfo.transform.gameObject.layer == 3){
-                // Debug.Log(hitInfo.transform);
-                MotionControl.TranslateSetUp(hitInfo.transform.gameObject, Ray);
-            }else{
-                MotionControl.TranslateSetUp(null, Ray);
-            }
+        else if (Controller.LeftControllerGrab.WasPerformedThisFrame() || Controller.RightControllerGrab.WasPerformedThisFrame())
+        {
+            StartCoroutine(HandleGrab());
         }
-        if (Controller.Scale.IsPressed()){
+        else if (Controller.Scale.WasReleasedThisFrame())
+        {
+            StartCoroutine(HandleScaleRelease());
+        }
+        else if (Controller.LeftControllerGrab.WasReleasedThisFrame() || Controller.RightControllerGrab.WasReleasedThisFrame())
+        {
+            StartCoroutine(HandleGrabRelease());
+        }
+    }
+
+    private IEnumerator HandleScale()
+    {
+        LeftRay.TryGetCurrent3DRaycastHit(out RaycastHit lefthitInfo);
+        RightRay.TryGetCurrent3DRaycastHit(out RaycastHit righthitInfo);
+
+        GameObject controlledObject = lefthitInfo.transform?.gameObject ?? righthitInfo.transform?.gameObject;
+        MotionControl.ScaleSetUp(controlledObject?.layer == 3 ? controlledObject : null);
+
+        while (Controller.Scale.IsPressed())
+        {
             MotionControl.Scalling();
-            Switch.TVUIDisable();
-            if(gamePlay.mode == "Observe"){
-                Switch.NamePlateDisable();
-            }
-            Switch.PapanUDisable();
-        }else if(Controller.LeftControllerGrab.IsPressed()){
-            MotionControl.Translating(LeftRay);
-            MotionControl.Zoom(Controller.ZOOM.ReadValue<Vector2>());
-            Switch.TVUIDisable();
-            if(gamePlay.mode == "Observe"){
-                Switch.NamePlateDisable();
-            }
-            Switch.PapanUDisable();
-        }else if(Controller.RightControllerGrab.IsPressed()){
-            MotionControl.Translating(RightRay);
-            MotionControl.Zoom(Controller.ZOOM.ReadValue<Vector2>());
-            Switch.TVUIDisable();
-            if(gamePlay.mode == "Observe"){
-                Switch.NamePlateDisable();
-            }
-            Switch.PapanUDisable();
-        }else if(Controller.Scale.WasReleasedThisFrame()){
-            if(gamePlay.mode == "Observe"){
-                Switch.NamePlateEnable();
-            }
-            Switch.TVUIEnable();
-            Switch.PapanUIEnable();
-        }else if(Controller.LeftControllerGrab.WasReleasedThisFrame()){
-            Switch.TVUIEnable();
-            if(gamePlay.mode == "Observe"){
-                Switch.NamePlateEnable();
-            }
-            Switch.PapanUIEnable();
-        }else if(Controller.RightControllerGrab.WasReleasedThisFrame()){
-            Switch.TVUIEnable();
-            if(gamePlay.mode == "Observe"){
-                Switch.NamePlateEnable();
-            }
-            Switch.PapanUIEnable();
+            DisableUIElements();
+            yield return null;
         }
-
-        //Rotate
-        if(Controller.RotateZAxis.WasPressedThisFrame()){
-
-        }else if(Controller.LeftControllerRotate.WasPressedThisFrame() || Controller.RightControllerRotate.WasPressedThisFrame()){
-            XRRayInteractor Ray = null;
-            if(Controller.LeftControllerRotate.WasPressedThisFrame()){
-                Ray = LeftRay;
-            }else if(Controller.RightControllerRotate.WasPressedThisFrame()){
-                Ray = RightRay;
-            }
-            // Debug.Log(Ray);
-            Ray.TryGetCurrent3DRaycastHit(out RaycastHit hitInfo);
-            if(hitInfo.transform != null && hitInfo.transform.gameObject.layer == 3){
-                MotionControl.RotateSetUp(hitInfo.transform.gameObject, Ray);
-            }else {
-                MotionControl.RotateSetUp(null, Ray);
-            }
-        }
-        if(Controller.RotateZAxis.IsPressed()){
-
-        }else if(Controller.LeftControllerRotate.IsPressed()){
-            MotionControl.Rotating(LeftRay);
-            Switch.TVUIDisable();
-            if(gamePlay.mode == "Observe"){
-                Switch.NamePlateDisable();
-            }
-            Switch.PapanUDisable();
-        }else if(Controller.RightControllerRotate.IsPressed()){
-            MotionControl.Rotating(RightRay);
-            Switch.TVUIDisable();
-            if(gamePlay.mode == "Observe"){
-                Switch.NamePlateDisable();
-            }
-            Switch.PapanUDisable();
-        }else if(Controller.LeftControllerRotate.WasReleasedThisFrame()){
-            if(gamePlay.mode == "Observe"){
-                Switch.NamePlateEnable();
-            }
-            Switch.TVUIEnable();
-            Switch.PapanUIEnable();
-        }else if(Controller.RightControllerRotate.WasReleasedThisFrame()){
-            if(gamePlay.mode == "Observe"){
-                Switch.NamePlateEnable();
-            }
-            Switch.TVUIEnable();
-            Switch.PapanUIEnable();
-        }
-        RaycastResult Result;
-        if(LeftRay.TryGetCurrentUIRaycastResult(out Result)){
-            // Debug.Log(Result);
-            Controller.Disable();
-            if(Mencocokkan.LeftControllerGrab.WasPressedThisFrame() && ActiveRay == null && Result.gameObject.layer == 6){
-                Switch.TVUIDisable();
-                ActiveRay = LeftRay; 
-                SetPartName(GrabableNamePlate, Result);
-                MotionControl.TranslateSetUp(GrabableNamePlate,LeftRay);
-                // tulang.NamePlateSwitch();
-                Switch.NamePlateEnable();
-                
-                // Debug.Log("lll");
-            }
-        }else if (RightRay.TryGetCurrentUIRaycastResult(out Result)){
-            Controller.Disable();
-            if(Mencocokkan.RightControllerGrab.WasPressedThisFrame() && ActiveRay == null && Result.gameObject.layer == 6){
-                Switch.TVUIDisable();
-                ActiveRay = RightRay; 
-                SetPartName(GrabableNamePlate, Result);
-                MotionControl.TranslateSetUp(GrabableNamePlate,RightRay);
-                // tulang.NamePlateSwitch();
-                Switch.NamePlateEnable();
-                
-            }
-        }else{
-            Controller.Enable();
-            // Switch.TVUIEnable();
-        }
-        if(Mencocokkan.LeftControllerGrab.IsPressed() && ActiveRay == LeftRay){
-            MotionControl.Translating(LeftRay);
-        }else if(Mencocokkan.RightControllerGrab.IsPressed() && ActiveRay == RightRay){
-            MotionControl.Translating(RightRay);
-        }
-        if(ActiveRay == LeftRay && Mencocokkan.LeftControllerGrab.WasReleasedThisFrame()){
-            gamePlay.SetNameOfPlateNameOnBone(LeftRay);
-            Controller.Enable();
-            ActiveRay = null;
-            // tulang.TVSwitch();
-            
-            Switch.NamePlateDisable();
-            Switch.TVUIEnable();
-            Switch.PapanUIEnable();
-        }else if(ActiveRay == RightRay && Mencocokkan.RightControllerGrab.WasReleasedThisFrame()){
-            gamePlay.SetNameOfPlateNameOnBone(RightRay);
-            Controller.Enable();
-            ActiveRay = null;
-            // tulang.TVSwitch();
-            Switch.NamePlateDisable();
-            Switch.TVUIEnable();
-            Switch.PapanUIEnable();
-        }
-        // if(Mencocokkan.LeftControllerGrab.WasPressedThisFrame()){
-        //     Controller.Disable();
-        //     GetPartName(LeftRay);
-        // }else if(Mencocokkan.RightControllerGrab.WasPressedThisFrame()){
-        //     Controller.Disable();
-        //     GetPartName(LeftRay);
-        // }
-        // if(Mencocokkan.LeftControllerGrab.WasReleasedThisFrame()){
-        //     Controller.Enable();
-        // }else if(Mencocokkan.RightControllerGrab.WasReleasedThisFrame()){
-        //     Controller.Enable();
-        // }
-        
+        EnableUIElements();
     }
-    private void SetPartName(GameObject NamePlate, RaycastResult Result){
-        GrabableNamePlate.transform.Find("NamePlate").Find("Tamplate").GetComponent<TextMeshProUGUI>().SetText(Result.gameObject.name);
-        GrabableNamePlate.transform.position = Result.gameObject.transform.position;
-        GrabableNamePlate.transform.rotation = Result.gameObject.transform.rotation;
-        Debug.Log("Berhasil");
-    }
-    public void input(InputAction.CallbackContext context){
 
+    private IEnumerator HandleGrab()
+    {
+        XRRayInteractor ray = Controller.LeftControllerGrab.WasPressedThisFrame() ? LeftRay : RightRay;
+        ray.TryGetCurrent3DRaycastHit(out RaycastHit hitInfo);
+
+        if (hitInfo.transform?.gameObject.layer == 3)
+        {
+            MotionControl.TranslateSetUp(hitInfo.transform.gameObject, ray);
+        }
+        else
+        {
+            MotionControl.TranslateSetUp(null, ray);
+        }
+
+        while (Controller.LeftControllerGrab.IsPressed() || Controller.RightControllerGrab.IsPressed())
+        {
+            MotionControl.Translating(ray);
+            MotionControl.Zoom(Controller.ZOOM.ReadValue<Vector2>());
+            DisableUIElements();
+            yield return null;
+        }
+        EnableUIElements();
+    }
+
+    private IEnumerator HandleScaleRelease()
+    {
+        EnableUIElements();
+        if (gamePlay.mode == "Observe")
+        {
+            Switch.NamePlateEnable();
+        }
+        yield return null;
+    }
+
+    private IEnumerator HandleGrabRelease()
+    {
+        EnableUIElements();
+        if (gamePlay.mode == "Observe")
+        {
+            Switch.NamePlateEnable();
+        }
+        yield return null;
+    }
+
+    private void HandleUIRaycast()
+    {
+        if (LeftRay.TryGetCurrentUIRaycastResult(out RaycastResult result))
+        {
+            Controller.Disable();
+            if (Mencocokkan.LeftControllerGrab.WasPressedThisFrame() && ActiveRay == null && result.gameObject.layer == 6)
+            {
+                StartCoroutine(HandleUIInteraction(result, LeftRay));
+            }
+        }
+        else if (RightRay.TryGetCurrentUIRaycastResult(out result))
+        {
+            Controller.Disable();
+            if (Mencocokkan.RightControllerGrab.WasPressedThisFrame() && ActiveRay == null && result.gameObject.layer == 6)
+            {
+                StartCoroutine(HandleUIInteraction(result, RightRay));
+            }
+        }
+        else
+        {
+            Controller.Enable();
+        }
+    }
+
+    private IEnumerator HandleUIInteraction(RaycastResult result, XRRayInteractor ray)
+    {
+        ActiveRay = ray;
+        SetPartName(GrabableNamePlate, result);
+        MotionControl.TranslateSetUp(GrabableNamePlate, ray);
+        Switch.NamePlateEnable();
+
+        while (Mencocokkan.LeftControllerGrab.IsPressed() || Mencocokkan.RightControllerGrab.IsPressed())
+        {
+            MotionControl.Translating(ray);
+            yield return null;
+        }
+
+        gamePlay.SetNameOfPlateNameOnBone(ray);
+        ActiveRay = null;
+        EnableUIElements();
+        Switch.NamePlateDisable();
+    }
+
+    private void DisableUIElements()
+    {
+        Switch.TVUIDisable();
+        if (gamePlay.mode == "Observe")
+        {
+            Switch.NamePlateDisable();
+        }
+        Switch.PapanUDisable();
+    }
+
+    private void EnableUIElements()
+    {
+        Switch.TVUIEnable();
+        if (gamePlay.mode == "Observe")
+        {
+            Switch.NamePlateEnable();
+        }
+        Switch.PapanUIEnable();
+    }
+
+    private void SetPartName(GameObject namePlate, RaycastResult result)
+    {
+        namePlate.transform.Find("NamePlate").Find("Template").GetComponent<TextMeshProUGUI>().SetText(result.gameObject.name);
+        namePlate.transform.position = result.gameObject.transform.position;
+        namePlate.transform.rotation = result.gameObject.transform.rotation;
+        Debug.Log("Part name set successfully.");
     }
 }
