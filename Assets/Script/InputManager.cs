@@ -71,6 +71,9 @@ public class InputManager : MonoBehaviour
 
     private void HandleControllerInput()
     {
+        if (Controller.LeftControllerRotate.WasPerformedThisFrame() || Controller.LeftControllerRotate.WasPerformedThisFrame()){
+            StartCoroutine(HandleRotate());
+        }
         if (Controller.Scale.WasPressedThisFrame())
         {
             StartCoroutine(HandleScale());
@@ -88,7 +91,27 @@ public class InputManager : MonoBehaviour
             StartCoroutine(HandleGrabRelease());
         }
     }
-
+    private IEnumerator HandleRotate(){
+        XRRayInteractor ray = Controller.LeftControllerGrab.WasPressedThisFrame() ? LeftRay : RightRay;
+        ray.TryGetCurrent3DRaycastHit(out RaycastHit hitInfo);
+        // Debug.Log(hitInfo.)
+        if (hitInfo.transform?.gameObject.layer == 3)
+        {
+            MotionControl.TranslateSetUp(hitInfo.transform.gameObject, ray);
+        }
+        else
+        {
+            MotionControl.TranslateSetUp(null, ray);
+        }
+        while (Controller.LeftControllerRotate.IsPressed() || Controller.RightControllerRotate.IsPressed())
+        {
+            Debug.Log("rotating");
+            MotionControl.Rotating(ray);
+            DisableUIElements();
+            yield return null;
+        }
+        EnableUIElements();
+    }
     private IEnumerator HandleScale()
     {
         LeftRay.TryGetCurrent3DRaycastHit(out RaycastHit lefthitInfo);
